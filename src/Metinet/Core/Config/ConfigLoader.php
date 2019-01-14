@@ -2,7 +2,7 @@
 
 namespace Metinet\Core\Config;
 
-interface Loader
+interface ConfigLoader
 {
     public function load(): array;
 }

@@ -3,8 +3,8 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Metinet\Core\Config\Configuration;
-use Metinet\Core\Config\JsonLoader;
-use Metinet\Core\Config\PhpLoader;
+use Metinet\Core\Config\JsonConfigLoader;
+use Metinet\Core\Config\PhpConfigLoader;
 use Metinet\Core\Config\RouteCollectionFactory;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
@@ -30,7 +30,7 @@ function signup() {
 
 $request = Request::createFromGlobals();
 
-$config = new Configuration();
+$config = new Configuration(new JsonConfigLoader([__DIR__.'/../config/routes.json']));
 $routeUrlMatcher = new RouteUrlMatcher($config->getRoutes());
 
 try {

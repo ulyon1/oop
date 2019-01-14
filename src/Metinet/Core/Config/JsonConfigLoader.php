@@ -2,7 +2,7 @@
 
 namespace Metinet\Core\Config;
 
-class JsonLoader implements Loader
+class JsonConfigLoader implements ConfigLoader
 {
     private $paths;
 

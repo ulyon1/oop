@@ -2,7 +2,7 @@
 
 namespace Metinet\Core\Config;
 
-class PhpLoader implements Loader
+class PhpConfigLoader implements ConfigLoader
 {
     private $paths;
 
