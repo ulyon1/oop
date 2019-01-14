@@ -3,15 +3,5 @@
     "method": "GET",
     "path": "/hello",
     "action": "sayHello"
-  },
-    {
-      "method": "GET",
-      "path": "/about",
-      "action": "about"
-    },
-    {
-      "method": "GET",
-      "path": "/signup",
-      "action": "signup"
-    }]
+  }]
 }

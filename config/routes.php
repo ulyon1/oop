@@ -15,12 +15,7 @@ return [
         [
             'method' => 'GET',
             'path' => '/about',
-            'action' => 'about'
+            'action' => 'abut'
         ],
-        [
-            'method' => 'GET',
-            'path' => '/hello',
-            'action' => 'sayHello'
-        ]
     ]
 ];

@@ -2,12 +2,15 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Metinet\Core\Config\ChainConfigLoader;
 use Metinet\Core\Config\Configuration;
 use Metinet\Core\Config\JsonConfigLoader;
 use Metinet\Core\Config\PhpConfigLoader;
-use Metinet\Core\Config\RouteCollectionFactory;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
+use Metinet\Core\Logger\FileLogger;
+use Metinet\Core\Logger\ObfuscatedFormatter;
+use Metinet\Core\Logger\SimpleFormatter;
 use Metinet\Core\Routing\RouteNotFound;
 use Metinet\Core\Routing\RouteUrlMatcher;
 
@@ -30,8 +33,18 @@ function signup() {
 
 $request = Request::createFromGlobals();
 
-$config = new Configuration(new JsonConfigLoader([__DIR__.'/../config/routes.json']));
+$loader = new ChainConfigLoader([
+    new JsonConfigLoader([__DIR__.'/../config/routes.json']),
+    new PhpConfigLoader([__DIR__.'/../config/routes.php'])
+]);
+$config = new Configuration($loader);
+
 $routeUrlMatcher = new RouteUrlMatcher($config->getRoutes());
+
+$logger = new FileLogger(
+    __DIR__ . '/../var/logs/app.log',
+    new ObfuscatedFormatter(new SimpleFormatter("{message} | {url}\n"))
+);
 
 try {
     $action = $routeUrlMatcher->match($request);
@@ -43,11 +56,13 @@ try {
 
 } catch (RouteNotFound $e) {
     $response = new Response($e->getMessage(), 404);
+    $logger->log($e->getMessage(), ['url' => $request->getPath()]);
 } catch (\Exception $exception) {
     $response = new Response(
-        $exception->getMessage(),
+        'Unknown error occurred',
         500
     );
+    $logger->log($exception->getMessage(), ['url' => $request->getPath()]);
 }
 
 $response->send();
