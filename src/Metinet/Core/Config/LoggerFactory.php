@@ -4,6 +4,7 @@ namespace Metinet\Core\Config;
 
 use Metinet\Core\Logger\FileLogger;
 use Metinet\Core\Logger\Logger;
+use Metinet\Core\Logger\NullLogger;
 use Metinet\Core\Logger\ObfuscatedFormatter;
 use Metinet\Core\Logger\SimpleFormatter;
 
@@ -21,6 +22,9 @@ class LoggerFactory
                     : new SimpleFormatter($loggerConfig['format'] ?? null)
                 ;
                 $logger = new FileLogger($loggerConfig['path'], $formatter);
+                break;
+            case 'null':
+                $logger = new NullLogger();
                 break;
             default:
                 throw new \Exception(sprintf('Unknown logger type: "%s"', $loggerType));

@@ -1,7 +1,14 @@
 {
-  "routes": [{
-    "method": "GET",
-    "path": "/hello",
-    "action": "sayHello"
-  }]
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hello",
+      "action": "Metinet:Controllers:DefaultController::sayHello"
+    },
+    {
+      "method": "GET",
+      "path": "/members",
+      "action": "Metinet:Controllers:MembersController::profile"
+    }
+  ]
 }

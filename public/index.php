@@ -6,30 +6,11 @@ use Metinet\Core\Config\ChainConfigLoader;
 use Metinet\Core\Config\Configuration;
 use Metinet\Core\Config\JsonConfigLoader;
 use Metinet\Core\Config\PhpConfigLoader;
+use Metinet\Core\Controller\ControllerResolver;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
-use Metinet\Core\Logger\FileLogger;
-use Metinet\Core\Logger\ObfuscatedFormatter;
-use Metinet\Core\Logger\SimpleFormatter;
 use Metinet\Core\Routing\RouteNotFound;
 use Metinet\Core\Routing\RouteUrlMatcher;
-
-function sayHello(Request $request) {
-    $name = $request->getQuery()->get('name');
-    if (null === $name) {
-        throw new Exception("I don't say Hello to anonymous, introduce yourself first!");
-    }
-
-    return new Response(sprintf('<p>Hello <b>%s</b></p>', htmlspecialchars($name, ENT_QUOTES, 'UTF-8')));
-}
-
-function about() {
-    return new Response('À propos');
-}
-
-function signup() {
-    return new Response('Inscription');
-}
 
 $request = Request::createFromGlobals();
 
@@ -39,27 +20,25 @@ $loader = new ChainConfigLoader([
 ]);
 $config = new Configuration($loader);
 
-$routeUrlMatcher = new RouteUrlMatcher($config->getRoutes());
-
 $logger = $config->getLogger();
 
 try {
-    $action = $routeUrlMatcher->match($request);
-    if (!is_callable($action)) {
+    $controllerResolver = new ControllerResolver(
+        new RouteUrlMatcher($config->getRoutes())
+    );
+    $callable = $controllerResolver->resolve($request);
 
-        throw new Exception('Action is not callable');
-    }
-    $response = call_user_func($action, $request);
+    $response = call_user_func($callable, $request);
 
 } catch (RouteNotFound $e) {
     $response = new Response($e->getMessage(), 404);
     $logger->log($e->getMessage(), ['url' => $request->getPath()]);
-} catch (\Exception $exception) {
+} catch (Throwable $e) {
     $response = new Response(
-        'Unknown error occurred',
+        sprintf('Unknown error occurred: %s', $e->getMessage()),
         500
     );
-    $logger->log($exception->getMessage(), ['url' => $request->getPath()]);
+    $logger->log($e->getMessage(), ['url' => $request->getPath()]);
 }
 
 $response->send();

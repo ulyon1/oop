@@ -2,6 +2,6 @@
   "logger": {
     "type": "file",
     "path": "../var/logs/app.log",
-    "obfuscated": false
+    "obfuscated": true
   }
 }
