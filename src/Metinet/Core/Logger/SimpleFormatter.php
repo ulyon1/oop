@@ -8,9 +8,9 @@ class SimpleFormatter implements Formatter
 
     private $format;
 
-    public function __construct(string $format = self::DEFAULT_FORMAT)
+    public function __construct(?string $format)
     {
-        $this->format = $format;
+        $this->format = $format ?? self::DEFAULT_FORMAT;
     }
 
     public function format(string $message, array $context): string

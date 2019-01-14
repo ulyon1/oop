@@ -34,17 +34,14 @@ function signup() {
 $request = Request::createFromGlobals();
 
 $loader = new ChainConfigLoader([
-    new JsonConfigLoader([__DIR__.'/../config/routes.json']),
+    new JsonConfigLoader([__DIR__.'/../config/routes.json', __DIR__.'/../config/app.json']),
     new PhpConfigLoader([__DIR__.'/../config/routes.php'])
 ]);
 $config = new Configuration($loader);
 
 $routeUrlMatcher = new RouteUrlMatcher($config->getRoutes());
 
-$logger = new FileLogger(
-    __DIR__ . '/../var/logs/app.log',
-    new ObfuscatedFormatter(new SimpleFormatter("{message} | {url}\n"))
-);
+$logger = $config->getLogger();
 
 try {
     $action = $routeUrlMatcher->match($request);
