@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Metinet\\": "src/Metinet"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "Metinet\\Tests\\": "tests/"
         }
     },
     "replace": {
