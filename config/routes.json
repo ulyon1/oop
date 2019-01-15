@@ -2,18 +2,13 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/hello",
-      "action": "Metinet:Controllers:DefaultController::sayHello"
-    },
-    {
-      "method": "GET",
-      "path": "/members",
-      "action": "Metinet:Controllers:MembersController::profile"
-    },
-    {
-      "method": "GET",
-      "path": "/conferences",
+      "path": "/",
       "action": "Metinet:Controllers:ConferencesController::viewConferences"
+    },
+    {
+      "method": "GET",
+      "path": "/signup",
+      "action": "Metinet:Controllers:MembersController::signUp"
     }
   ]
 }
