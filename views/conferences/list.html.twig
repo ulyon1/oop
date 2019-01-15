@@ -1,28 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <div id="conferences-list">
+    {% for conference in conferences %}
+        <section class="conference">
+            <header>
+                <h1>{{ conference.details.title }}</h1>
+            </header>
+            <p>{{ conference.details.description }}</p>
 
-<div id="conferences-list">
-{% for conference in conferences %}
-    <section class="conference">
-        <header>
-            <h1>{{ conference.details.title }}</h1>
-        </header>
-        <p>{{ conference.details.description }}</p>
-
-        <div class="conference-metadata">
-            <ul class="conference-keywords list-inline">
-                {% for keyword in conference.details.keywords %}
-                <li class="list-inline-item">{{ keyword }}</li>
-                {% endfor %}
-            </ul>
-            <p class="conference-date">Join us on <time datetime="{{ conference.date }}">{{ conference.date }}</time></p>
-            <address>
-                {{ conference.location.placeName }}
-                {{ conference.location.address }}
-            </address>
-        </div>
-    </section>
-{% endfor %}
-</div>
+            <div class="conference-metadata">
+                <ul class="conference-keywords list-inline">
+                    {% for keyword in conference.details.keywords %}
+                    <li class="list-inline-item">{{ keyword }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="conference-date">Join us on <time datetime="{{ conference.date }}">{{ conference.date }}</time></p>
+                <address>
+                    {{ conference.location.placeName }}
+                    {{ conference.location.address }}
+                </address>
+            </div>
+        </section>
+    {% endfor %}
+    </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script src="js/conferences_list.js"></script>
+{% endblock %}
+

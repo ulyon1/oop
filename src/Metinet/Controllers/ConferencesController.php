@@ -6,6 +6,7 @@ use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
 use Metinet\Domain\Conference;
 use Metinet\Domain\ConferenceDetails;
+use Metinet\Domain\ConferenceParticipant;
 use Metinet\Domain\Date;
 use Metinet\Domain\Location;
 use Metinet\Domain\PostalAddress;
@@ -15,13 +16,18 @@ class ConferencesController
     public function viewConferences(Request $request): Response
     {
         $conferences[] = new Conference(
+            300,
             new ConferenceDetails(
                 'Découvrez docker avec le LP Metinet',
                 'Curabitur sit amet varius mauris. Aliquam a metus ut risus laoreet rhoncus. Donec eu massa bibendum massa rutrum auctor. Quisque placerat leo sed nulla malesuada hendrerit.',
                 ['docker', 'virtualization']
             ),
             Date::fromAtomFormat('2019-02-01'),
-            new Location('Amphi demi-lune', new PostalAddress('71, rue Peter Fink', '01000', 'Bourg-en-Bresse', 'France'))
+            new Location('Amphi demi-lune', new PostalAddress('71, rue Peter Fink', '01000', 'Bourg-en-Bresse', 'France')),
+            array(new ConferenceParticipant("Etienne Langlois", "etiennedu62@kmail.zep", "46826824642"),
+                new ConferenceParticipant("Séraphin Cassiopet", "seraphinc@hotmail.com", "000462"),
+                new ConferenceParticipant("Barnabé Lenavet", "mifiguemiraisin@choum.blague", "88888")
+            )
         );
 
         return new Response($this->render('conferences/list.html.twig', ['conferences' => $conferences]), 200);
