@@ -17,7 +17,7 @@ class RouteUrlMatcher
     {
         foreach ($this->routes->all() as $route) {
             if ($route->getPath() === $request->getPath()
-                && $route->getHttpMethod() === $request->getMethod()) {
+                && \in_array($request->getMethod(), $route->getHttpMethods(), true)) {
 
                 return $route->getAction();
             }

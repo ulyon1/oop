@@ -2,9 +2,6 @@
 
 namespace Metinet\Core\Config;
 
-use Metinet\Core\Logger\Logger;
-use Metinet\Core\Routing\RouteCollection;
-
 class Configuration
 {
     private $loader;

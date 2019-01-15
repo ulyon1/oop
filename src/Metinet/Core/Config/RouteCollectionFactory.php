@@ -15,7 +15,7 @@ class RouteCollectionFactory
 
             $routes->add(
                 new Route(
-                    $rawRoute['method'],
+                    $rawRoute['methods'],
                     $rawRoute['path'],
                     $rawRoute['action']
                 )

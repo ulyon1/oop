@@ -1,12 +1,12 @@
 {
   "routes": [
     {
-      "method": "GET",
+      "methods": ["GET"],
       "path": "/",
       "action": "Metinet:Controllers:ConferencesController::viewConferences"
     },
     {
-      "method": "GET",
+      "methods": ["GET", "POST"],
       "path": "/signup",
       "action": "Metinet:Controllers:MembersController::signUp"
     }
