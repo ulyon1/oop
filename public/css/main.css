@@ -1,0 +1,17 @@
+#conferences-list .conference {
+    border: 1px grey solid;
+    border-radius: 5px;
+    margin: 1em;
+    padding: 0.3em;
+}
+#conferences-list .conference h1 {
+    margin-top: 0.1em;
+}
+
+#conferences-list .conference .conference-date {
+    text-align: right;
+}
+
+#conferences-list .conference .conference-keywords {
+    font-style: italic;
+}

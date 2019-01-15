@@ -5,41 +5,38 @@ namespace Metinet\Controllers;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
 use Metinet\Domain\Conference;
+use Metinet\Domain\ConferenceDetails;
+use Metinet\Domain\Date;
 
 class ConferencesController
 {
     public function viewConferences(Request $request): Response
     {
         $conferences[] = new Conference(
-            'Découvrez la programmation orientée objet',
-            'Pellentesque id metus quam. Curabitur laoreet, nibh ac feugiat eleifend, est mauris facilisis erat, in ultricies dolor nulla auctor tortor. Nunc dignissim ex erat. Ut eu consequat libero.',
-            new \DateTimeImmutable('+1 MONTH', new \DateTimeZone('UTC'))
+            new ConferenceDetails(
+                'Découvrez docker avec le LP Metinet',
+                'Curabitur sit amet varius mauris. Aliquam a metus ut risus laoreet rhoncus. Donec eu massa bibendum massa rutrum auctor. Quisque placerat leo sed nulla malesuada hendrerit.',
+                ['docker', 'virtualization']
+            ),
+            Date::fromAtomFormat('2019-02-01')
         );
 
-        $conferences[] = new Conference(
-            'Découvrez docker avec le LP Metinet',
-            'Curabitur sit amet varius mauris. Aliquam a metus ut risus laoreet rhoncus. Donec eu massa bibendum massa rutrum auctor. Quisque placerat leo sed nulla malesuada hendrerit.',
-            new \DateTimeImmutable('+1 YEAR', new \DateTimeZone('UTC'))
-        );
 
-        $content = '';
+        return new Response($this->render('conferences/list.html.twig', ['conferences' => $conferences]), 200);
+    }
 
-        foreach ($conferences as $conference) {
-            [$title, $desc, $date] =
-            [
-                $conference->getTitle(),
-                $conference->getDescription(),
-                $conference->getDate()->format(DATE_ATOM),
-            ];
-            $content .=<<<CONF
-<section>
-<h1>${title}<time>${date}</time></h1>
-<p>${desc}</p>
-</section>
-CONF;
+    private function render(string $templatePath, array $context = []): string
+    {
+        return $this->getTwigEnvironment()->render($templatePath, $context);
+    }
 
-        }
+    private function getTwigEnvironment(): \Twig_Environment
+    {
+        $loader = new \Twig_Loader_Filesystem(dirname(dirname(dirname(__DIR__))).'/views');
+        $twig = new \Twig_Environment($loader, ['debug' => true]);
+        $twig->addExtension(new \Twig_Extensions_Extension_Date());
+        $twig->addExtension(new \Twig_Extension_Debug());
 
-        return new Response($content, 200);
+        return $twig;
     }
 }

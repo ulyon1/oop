@@ -34,11 +34,8 @@ try {
     $response = new Response($e->getMessage(), 404);
     $logger->log($e->getMessage(), ['url' => $request->getPath()]);
 } catch (Throwable $e) {
-    $response = new Response(
-        sprintf('Unknown error occurred: %s', $e->getMessage()),
-        500
-    );
     $logger->log($e->getMessage(), ['url' => $request->getPath()]);
+    throw $e;
 }
 
 $response->send();

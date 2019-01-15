@@ -4,28 +4,21 @@ namespace Metinet\Domain;
 
 class Conference
 {
-    private $title;
-    private $description;
+    private $details;
     private $date;
 
-    public function __construct(string $title, string $description, \DateTimeImmutable $date)
+    public function __construct(ConferenceDetails $details, Date $date)
     {
-        $this->title = $title;
-        $this->description = $description;
+        $this->details = $details;
         $this->date = $date;
     }
 
-    public function getTitle(): string
+    public function getDetails(): ConferenceDetaiinls
     {
-        return $this->title;
+        return $this->details;
     }
 
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    public function getDate(): \DateTimeImmutable
+    public function getDate(): Date
     {
         return $this->date;
     }
