@@ -5,7 +5,8 @@
         "php": "^7.2",
         "beberlei/assert": "^2.8",
         "doctrine/dbal": "^2.6",
-        "mathiasverraes/classfunctions": "^1.1"
+        "mathiasverraes/classfunctions": "^1.1",
+        "twig/twig": "^2.0"
     },
     "require-dev": {
         "ramsey/uuid-console": "^1.1",
