@@ -2,7 +2,6 @@
 
 namespace Metinet\Controllers;
 
-use Metinet\Core\DependencyManager;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
 use Metinet\Domain\Attendee;
@@ -18,15 +17,8 @@ use Metinet\Domain\RegistrationRule;
 use Metinet\Domain\Time;
 use Metinet\Domain\TimeSlot;
 
-class ConferencesController
+class ConferencesController extends BaseController
 {
-    private $dependencyManager;
-
-    public function __construct(DependencyManager $dependencyManager)
-    {
-        $this->dependencyManager = $dependencyManager;
-    }
-
     public function viewConferences(Request $request): Response
     {
         /** @var Conference[] $conferences */
@@ -67,10 +59,5 @@ class ConferencesController
         );
 
         return new Response($this->render('conferences/list.html.twig', ['conferences' => $conferences]), 200);
-    }
-
-    private function render(string $templatePath, array $context = []): string
-    {
-        return $this->dependencyManager->getTwig()->render($templatePath, $context);
     }
 }

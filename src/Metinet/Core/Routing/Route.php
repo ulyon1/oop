@@ -4,20 +4,20 @@ namespace Metinet\Core\Routing;
 
 class Route
 {
-    private $httpMethod;
+    private $httpMethods;
     private $path;
     private $action;
 
-    public function __construct(string $httpMethod, string $path, $action)
+    public function __construct(array $httpMethods, string $path, $action)
     {
-        $this->httpMethod = $httpMethod;
+        $this->httpMethods = $httpMethods;
         $this->path = $path;
         $this->action = $action;
     }
 
-    public function getHttpMethod(): string
+    public function getHttpMethods(): array
     {
-        return $this->httpMethod;
+        return $this->httpMethods;
     }
 
     public function getPath(): string

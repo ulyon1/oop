@@ -29,12 +29,18 @@ class DependencyManager
 
     public function getTwig(): \Twig_Environment
     {
+        $debug = (bool) $this->configuration->getSection('twig')['debug'];
+
         $loader = new \Twig_Loader_Filesystem($this->configuration->getSection('twig')['viewsPath']);
         $twig = new \Twig_Environment($loader, [
-            'debug' => (bool) $this->configuration->getSection('twig')['debug']
+            'debug' => $debug
         ]);
+
         $twig->addExtension(new \Twig_Extensions_Extension_Date());
-        $twig->addExtension(new \Twig_Extension_Debug());
+
+        if ($debug) {
+            $twig->addExtension(new \Twig_Extension_Debug());
+        }
 
         return $twig;
     }

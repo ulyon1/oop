@@ -5,7 +5,6 @@ require __DIR__ . '/../vendor/autoload.php';
 use Metinet\Core\Config\ChainConfigLoader;
 use Metinet\Core\Config\Configuration;
 use Metinet\Core\Config\JsonConfigLoader;
-use Metinet\Core\Config\PhpConfigLoader;
 use Metinet\Core\Controller\ControllerResolver;
 use Metinet\Core\DependencyManager;
 use Metinet\Core\Http\Request;
@@ -16,10 +15,14 @@ use Metinet\Core\Routing\RouteUrlMatcher;
 $request = Request::createFromGlobals();
 
 $loader = new ChainConfigLoader([
-    new JsonConfigLoader([__DIR__.'/../config/routes.json', __DIR__.'/../config/app.json']),
-    new PhpConfigLoader([__DIR__.'/../config/routes.php'])
+    new JsonConfigLoader([
+        __DIR__.'/../config/routes.json',
+        __DIR__.'/../config/app.json'
+    ]),
 ]);
+
 $config = new Configuration($loader);
+
 $dependencyManager = new DependencyManager($config);
 $logger = $dependencyManager->getLogger();
 
