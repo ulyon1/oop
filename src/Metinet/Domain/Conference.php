@@ -13,7 +13,7 @@ class Conference
         $this->date = $date;
     }
 
-    public function getDetails(): ConferenceDetaiinls
+    public function getDetails(): ConferenceDetails
     {
         return $this->details;
     }
