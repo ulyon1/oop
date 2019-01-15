@@ -9,6 +9,11 @@
       "method": "GET",
       "path": "/members",
       "action": "Metinet:Controllers:MembersController::profile"
+    },
+    {
+      "method": "GET",
+      "path": "/conferences",
+      "action": "Metinet:Controllers:ConferencesController::viewConferences"
     }
   ]
 }
