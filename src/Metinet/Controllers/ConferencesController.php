@@ -35,7 +35,7 @@ class ConferencesController
             RegistrationRule::allowExternalPeopleToRegisterToConference(Price::inLowestSubunit(1000, 'EUR', 100))
         );
 
-        $conferences[] = $conference = new Conference(
+        $conferences[] = new Conference(
             new ConferenceDetails(
                 'Découvrez la POO avec le LP Metinet',
                 'Curabitur sit amet varius mauris. Aliquam a metus ut risus laoreet rhoncus. Donec eu massa bibendum massa rutrum auctor. Quisque placerat leo sed nulla malesuada hendrerit.',

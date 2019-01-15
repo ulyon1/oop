@@ -10,6 +10,9 @@ class Time
 
     public function __construct(int $hour = 0, int $minute = 0, int $second = 0)
     {
+        if ($hour < 1 || $hour > 24) {
+            throw new \InvalidArgumentException('$hour must be between 1 and 24');
+        }
         $this->hour = $hour;
         $this->minute = $minute;
         $this->second = $second;

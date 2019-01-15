@@ -32,7 +32,7 @@ class Conference
 
     private function ensureConferenceHasNotReachedMaxAttendees(): void
     {
-        if ($this->hasPlacesLeft()) {
+        if ($this->hasMaxAttendeesBeenReached()) {
 
             throw new MaxAttendeesReached($this->maxAttendees);
         }
@@ -58,9 +58,9 @@ class Conference
         return $this->maxAttendees;
     }
 
-    public function hasPlacesLeft(): bool
+    public function hasMaxAttendeesBeenReached(): bool
     {
-        return ((1 + \count($this->attendees)) > $this->maxAttendees);
+        return ($this->maxAttendees <= \count($this->attendees));
     }
 
     public function areExternalPeopleAllowed(): bool

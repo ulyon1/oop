@@ -9,7 +9,7 @@ class TimeSlot
 
     public function __construct(Time $start, Time $end)
     {
-        // check if $start is greather than $end
+        // check if $start is greater than $end
 
         $this->start = $start;
         $this->end = $end;
