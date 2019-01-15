@@ -7,6 +7,7 @@ use Metinet\Core\Config\Configuration;
 use Metinet\Core\Config\JsonConfigLoader;
 use Metinet\Core\Config\PhpConfigLoader;
 use Metinet\Core\Controller\ControllerResolver;
+use Metinet\Core\DependencyManager;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
 use Metinet\Core\Routing\RouteNotFound;
@@ -19,12 +20,13 @@ $loader = new ChainConfigLoader([
     new PhpConfigLoader([__DIR__.'/../config/routes.php'])
 ]);
 $config = new Configuration($loader);
-
-$logger = $config->getLogger();
+$dependencyManager = new DependencyManager($config);
+$logger = $dependencyManager->getLogger();
 
 try {
     $controllerResolver = new ControllerResolver(
-        new RouteUrlMatcher($config->getRoutes())
+        new RouteUrlMatcher($dependencyManager->getRoutes()),
+        $dependencyManager
     );
     $callable = $controllerResolver->resolve($request);
 

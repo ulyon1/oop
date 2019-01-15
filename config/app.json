@@ -3,5 +3,9 @@
     "type": "file",
     "path": "../var/logs/app.log",
     "obfuscated": true
+  },
+  "twig": {
+    "viewsPath": "../views",
+    "debug": true
   }
 }

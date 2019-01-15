@@ -2,6 +2,7 @@
 
 namespace Metinet\Controllers;
 
+use Metinet\Core\DependencyManager;
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
 use Metinet\Domain\Attendee;
@@ -19,6 +20,13 @@ use Metinet\Domain\TimeSlot;
 
 class ConferencesController
 {
+    private $dependencyManager;
+
+    public function __construct(DependencyManager $dependencyManager)
+    {
+        $this->dependencyManager = $dependencyManager;
+    }
+
     public function viewConferences(Request $request): Response
     {
         /** @var Conference[] $conferences */
@@ -51,6 +59,9 @@ class ConferencesController
         $conference->register(
             new Attendee('Boris', 'Guéry', new Email('guery.b@gmail.com'), new PhoneNumber('+33686830312'))
         );
+
+        $this->dependencyManager->getLogger()->log('Attendee just registered');
+
         $conference->register(
             new Attendee('John', 'Doe', new Email('john.doe@example.com'), new PhoneNumber('+1999555555998'))
         );
@@ -60,16 +71,6 @@ class ConferencesController
 
     private function render(string $templatePath, array $context = []): string
     {
-        return $this->getTwigEnvironment()->render($templatePath, $context);
-    }
-
-    private function getTwigEnvironment(): \Twig_Environment
-    {
-        $loader = new \Twig_Loader_Filesystem(dirname(dirname(dirname(__DIR__))).'/views');
-        $twig = new \Twig_Environment($loader, ['debug' => true]);
-        $twig->addExtension(new \Twig_Extensions_Extension_Date());
-        $twig->addExtension(new \Twig_Extension_Debug());
-
-        return $twig;
+        return $this->dependencyManager->getTwig()->render($templatePath, $context);
     }
 }
