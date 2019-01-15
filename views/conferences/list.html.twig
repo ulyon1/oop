@@ -17,6 +17,10 @@
                 {% endfor %}
             </ul>
             <p class="conference-date">Join us on <time datetime="{{ conference.date }}">{{ conference.date }}</time></p>
+            <address>
+                {{ conference.location.placeName }}
+                {{ conference.location.address }}
+            </address>
         </div>
     </section>
 {% endfor %}

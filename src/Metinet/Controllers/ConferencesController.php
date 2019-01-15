@@ -7,6 +7,8 @@ use Metinet\Core\Http\Response;
 use Metinet\Domain\Conference;
 use Metinet\Domain\ConferenceDetails;
 use Metinet\Domain\Date;
+use Metinet\Domain\Location;
+use Metinet\Domain\PostalAddress;
 
 class ConferencesController
 {
@@ -18,9 +20,9 @@ class ConferencesController
                 'Curabitur sit amet varius mauris. Aliquam a metus ut risus laoreet rhoncus. Donec eu massa bibendum massa rutrum auctor. Quisque placerat leo sed nulla malesuada hendrerit.',
                 ['docker', 'virtualization']
             ),
-            Date::fromAtomFormat('2019-02-01')
+            Date::fromAtomFormat('2019-02-01'),
+            new Location('Amphi demi-lune', new PostalAddress('71, rue Peter Fink', '01000', 'Bourg-en-Bresse', 'France'))
         );
-
 
         return new Response($this->render('conferences/list.html.twig', ['conferences' => $conferences]), 200);
     }

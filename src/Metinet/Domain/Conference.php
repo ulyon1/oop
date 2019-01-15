@@ -6,11 +6,13 @@ class Conference
 {
     private $details;
     private $date;
+    private $location;
 
-    public function __construct(ConferenceDetails $details, Date $date)
+    public function __construct(ConferenceDetails $details, Date $date, Location $location)
     {
         $this->details = $details;
         $this->date = $date;
+        $this->location = $location;
     }
 
     public function getDetails(): ConferenceDetails
@@ -21,5 +23,10 @@ class Conference
     public function getDate(): Date
     {
         return $this->date;
+    }
+
+    public function getLocation(): Location
+    {
+        return $this->location;
     }
 }
