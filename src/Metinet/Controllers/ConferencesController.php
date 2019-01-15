@@ -8,7 +8,6 @@ use Metinet\Core\Http\Response;
 use Metinet\Domain\Attendee;
 use Metinet\Domain\Conference;
 use Metinet\Domain\ConferenceDetails;
-use Metinet\Domain\ConferenceParticipant;
 use Metinet\Domain\Date;
 use Metinet\Domain\Email;
 use Metinet\Domain\Location;
@@ -38,14 +37,9 @@ class ConferencesController
                 ['docker', 'virtualization']
             ),
             Date::fromAtomFormat('2019-02-01'),
-            new Location('Amphi demi-lune', new PostalAddress('71, rue Peter Fink', '01000', 'Bourg-en-Bresse', 'France')),
-            array(new ConferenceParticipant("Etienne Langlois", "etiennedu62@kmail.zep", "46826824642"),
-                new ConferenceParticipant("Séraphin Cassiopet", "seraphinc@hotmail.com", "000462"),
-                new ConferenceParticipant("Barnabé Lenavet", "mifiguemiraisin@choum.blague", "88888")
-            ),
             new TimeSlot(Time::fromString('14:00'), Time::fromString('16:00')),
             new Location('Amphi demi-lune', new PostalAddress('71, rue Peter Fink', '01000', 'Bourg-en-Bresse', 'France')),
-            2,
+            20,
             RegistrationRule::allowExternalPeopleToRegisterToConference(Price::inLowestSubunit(1000, 'EUR', 100))
         );
 

@@ -12,39 +12,22 @@
             <div class="conference-metadata">
                 <ul class="conference-keywords list-inline">
                     {% for keyword in conference.details.keywords %}
-                    <li class="list-inline-item">{{ keyword }}</li>
+                        <li class="list-inline-item">{{ keyword }}</li>
                     {% endfor %}
                 </ul>
-                <p class="conference-date">Join us on <time datetime="{{ conference.date }}">{{ conference.date }}</time></p>
+                <p class="conference-date">Join us on <time datetime="{{ conference.date }}">{{ conference.date }} (duration: {{ conference.duration }})</time></p>
                 <address>
                     {{ conference.location.placeName }}
                     {{ conference.location.address }}
                 </address>
+                <p class="max-attendees">{{ conference.maxAttendees }} available seats</p>
+                {% if not conference.areExternalPeopleAllowed %}
+                    <p><i>Warning, this conference is reserved to students!</i></p>
+                {% else %}
+                    <p><i>Warning, there is a additional fee of {{ conference.externalPeopleEntrancePrice }} for non-students attendees</i></p>
+                {% endif %}
             </div>
         </section>
     {% endfor %}
-    </div>
-{% endblock %}
-        <div class="conference-metadata">
-            <ul class="conference-keywords list-inline">
-                {% for keyword in conference.details.keywords %}
-                <li class="list-inline-item">{{ keyword }}</li>
-                {% endfor %}
-            </ul>
-            <p class="conference-date">Join us on <time datetime="{{ conference.date }}">{{ conference.date }} (duration: {{ conference.duration }})</time></p>
-            <address>
-                {{ conference.location.placeName }}
-                {{ conference.location.address }}
-            </address>
-            <p class="max-attendees">{{ conference.maxAttendees }} available seats</p>
-            {% if not conference.areExternalPeopleAllowed %}
-                <p><i>Warning, this conference is reserved to students!</i></p>
-            {% else %}
-                <p><i>Warning, there is a additional fee of {{ conference.externalPeopleEntrancePrice }} for non-students attendees</i></p>
-            {% endif %}
-        </div>
-    </section>
-{% endfor %}
-</div>
 {% endblock %}
 

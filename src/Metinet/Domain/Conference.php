@@ -4,7 +4,6 @@ namespace Metinet\Domain;
 
 class Conference
 {
-    private $seatsAvailable;
     private $details;
     private $date;
     private $location;
@@ -16,21 +15,19 @@ class Conference
     public function __construct(ConferenceDetails $details, Date $date, TimeSlot $timeSlot,
         Location $location, int $maxAttendees, RegistrationRule $registrationRule)
     {
-        $this->ensureParticipants($participants);
-
-        $this->seatsAvailable = $seatsAvailable;
         $this->details = $details;
         $this->date = $date;
         $this->timeSlot = $timeSlot;
         $this->location = $location;
+        $this->maxAttendees = $maxAttendees;
+        $this->registrationRule = $registrationRule;
+        $this->attendees = [];
     }
 
     public function getSeatsAvailable(): int
     {
         return $this->seatsAvailable;
         $this->maxAttendees = $maxAttendees;
-        $this->attendees = [];
-        $this->registrationRule = $registrationRule;
     }
 
     public function register(Attendee $attendee): void
