@@ -8,22 +8,43 @@ class Conference
     private $details;
     private $date;
     private $location;
-    private $participants;
+    private $maxAttendees;
+    private $attendees;
+    private $registrationRule;
+    private $timeSlot;
 
-    public function __construct(int $seatsAvailable, ConferenceDetails $details, Date $date, Location $location, array $participants)
+    public function __construct(ConferenceDetails $details, Date $date, TimeSlot $timeSlot,
+        Location $location, int $maxAttendees, RegistrationRule $registrationRule)
     {
         $this->ensureParticipants($participants);
 
         $this->seatsAvailable = $seatsAvailable;
         $this->details = $details;
         $this->date = $date;
+        $this->timeSlot = $timeSlot;
         $this->location = $location;
-        $this->participants = $participants;
     }
 
     public function getSeatsAvailable(): int
     {
         return $this->seatsAvailable;
+        $this->maxAttendees = $maxAttendees;
+        $this->attendees = [];
+        $this->registrationRule = $registrationRule;
+    }
+
+    public function register(Attendee $attendee): void
+    {
+        $this->ensureConferenceHasNotReachedMaxAttendees();
+        $this->attendees[] = $attendee;
+    }
+
+    private function ensureConferenceHasNotReachedMaxAttendees(): void
+    {
+        if ($this->hasMaxAttendeesBeenReached()) {
+
+            throw new MaxAttendeesReached($this->maxAttendees);
+        }
     }
 
     public function getDetails(): ConferenceDetails
@@ -41,19 +62,28 @@ class Conference
         return $this->location;
     }
 
-    public function getParticipants(): array
+    public function getMaxAttendees(): int
     {
-        return $this->participants;
+        return $this->maxAttendees;
     }
 
-    public function ensureParticipants(array $participants): void
+    public function hasMaxAttendeesBeenReached(): bool
     {
-        foreach ($participants as $participant){
-            if(get_class($participant) !== ConferenceParticipant::class) {
-                throw new \InvalidArgumentException('Invalid array of participants');
-            }
-        }
+        return ($this->maxAttendees <= \count($this->attendees));
     }
 
+    public function areExternalPeopleAllowed(): bool
+    {
+        return $this->registrationRule->areExternalPeopleAllowed();
+    }
 
+    public function getExternalPeopleEntrancePrice(): ?Price
+    {
+        return $this->registrationRule->getExternalPeopleEntrancePrice();
+    }
+
+    public function getDuration(): Time
+    {
+        return $this->timeSlot->getDuration();
+    }
 }

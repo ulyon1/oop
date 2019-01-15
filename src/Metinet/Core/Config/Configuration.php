@@ -28,14 +28,4 @@ class Configuration
 
         return $this->config[$section];
     }
-
-    public function getRoutes(): RouteCollection
-    {
-        return RouteCollectionFactory::createFromArray($this->getSection('routes'));
-    }
-
-    public function getLogger(): Logger
-    {
-        return LoggerFactory::create($this->getSection('logger'));
-    }
 }
