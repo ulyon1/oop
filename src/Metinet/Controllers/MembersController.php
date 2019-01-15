@@ -4,10 +4,6 @@ namespace Metinet\Controllers;
 
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
-use Metinet\Domain\Email;
-use Metinet\Domain\Members\Member;
-use Metinet\Domain\Members\Profile;
-use Metinet\Domain\PhoneNumber;
 use Metinet\FormValidation\MemberSignUp;
 use Metinet\FormValidation\MemberSignUpValidator;
 
@@ -24,11 +20,7 @@ class MembersController extends BaseController
 
             if (0 === \count($errors)) {
 
-                $member = Member::signUp(
-                    new Profile($signUp->firstName, $signUp->lastName, new PhoneNumber($signUp->phoneNumber)),
-                    new Email($signUp->email),
-                    $signUp->password
-                );
+                $member = $this->dependencyManager->getMemberFactory()->fromSignUp($signUp);
 
                 return $this->redirect('/');
             }

@@ -7,6 +7,10 @@ use Metinet\Core\Config\LoggerFactory;
 use Metinet\Core\Config\RouteCollectionFactory;
 use Metinet\Core\Logger\Logger;
 use Metinet\Core\Routing\RouteCollection;
+use Metinet\Core\Security\PasswordEncoder;
+use Metinet\Core\Security\PlainTextPasswordEncoder;
+use Metinet\Core\Security\Sha1PasswordEncoder;
+use Metinet\Domain\Members\MemberFactory;
 
 class DependencyManager
 {
@@ -43,5 +47,24 @@ class DependencyManager
         }
 
         return $twig;
+    }
+
+    public function getPasswordEncoder(): PasswordEncoder
+    {
+        $passwordEncoderId = $this->configuration->getSection('security')['passwordEncoder'];
+
+        switch ($passwordEncoderId) {
+            case 'sha1':
+                return new Sha1PasswordEncoder();
+            case 'plain':
+                return new PlainTextPasswordEncoder();
+            default:
+                throw new \LogicException(sprintf('Unknown Security Encoder: "%s"', $passwordEncoderId));
+        }
+    }
+
+    public function getMemberFactory(): MemberFactory
+    {
+        return new MemberFactory($this->getPasswordEncoder());
     }
 }
