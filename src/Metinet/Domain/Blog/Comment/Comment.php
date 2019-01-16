@@ -24,6 +24,11 @@ class Comment
 
     private function __construct(string $body, string $author)
     {
+        if (empty($body)) {
+
+            throw UnableToPostComment::cannotPostWithAnEmptyBody();
+        }
+
         $this->body = $body;
         $this->author = $author;
     }
