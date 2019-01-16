@@ -40,7 +40,7 @@ class Member
         return (string) $this->email;
     }
 
-    public function getEncodedPassword(): string
+    public function getEncodedPassword(): EncodedPassword
     {
         return $this->encodedPassword;
     }
