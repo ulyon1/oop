@@ -28,7 +28,7 @@ class MembersController extends BaseController
         }
 
         return $this->renderResponse('members/signUp.html.twig', [
-            'errors' => $validationResults->all() ?? [],
+            'errors' => $validationResults ?? [],
             'signUp' => $signUp
         ]);
     }
