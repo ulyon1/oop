@@ -4,10 +4,6 @@ namespace Metinet\Controllers;
 
 use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
-use Metinet\Domain\Email;
-use Metinet\Domain\Members\Member;
-use Metinet\Domain\Members\Profile;
-use Metinet\Domain\PhoneNumber;
 use Metinet\FormValidation\MemberSignUp;
 use Metinet\FormValidation\MemberSignUpValidator;
 
@@ -20,22 +16,19 @@ class MembersController extends BaseController
         if ($request->isPost()) {
 
             $memberSignUpValidator = new MemberSignUpValidator();
-            $errors = $memberSignUpValidator->validate($signUp);
+            $validationResults = $memberSignUpValidator->validate($signUp);
 
-            if (0 === \count($errors)) {
+            if (!$validationResults->hasErrors()) {
 
-                $member = Member::signUp(
-                    new Profile($signUp->firstName, $signUp->lastName, new PhoneNumber($signUp->phoneNumber)),
-                    new Email($signUp->email),
-                    $signUp->password
-                );
+                $member = $this->dependencyManager->getMemberFactory()->fromSignUp($signUp);
+                $this->dependencyManager->getMemberRepository()->save($member);
 
                 return $this->redirect('/');
             }
         }
 
         return $this->renderResponse('members/signUp.html.twig', [
-            'errors' => $errors ?? [],
+            'errors' => $validationResults->all() ?? [],
             'signUp' => $signUp
         ]);
     }

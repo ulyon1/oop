@@ -1,12 +1,10 @@
 <?php
-/**
- * @author Boris Guéry <guery.b@gmail.com>
- */
 
 namespace Metinet\Domain\Members;
 
 use Metinet\Core\Security\PasswordEncoder;
-use Metinet\Domain\Conferences\Email;
+use Metinet\Domain\Email;
+use Metinet\Domain\PhoneNumber;
 use Metinet\FormValidation\MemberSignUp;
 
 class MemberFactory
@@ -22,12 +20,12 @@ class MemberFactory
     {
         return Member::signUp(
             new Profile(
-                $memberSignUp->getFirstName(),
-                $memberSignUp->getLastName(),
-                $memberSignUp->getPhoneNumber()
+                $memberSignUp->firstName,
+                $memberSignUp->lastName,
+                new PhoneNumber($memberSignUp->phoneNumber)
             ),
-            new Email($memberSignUp->getEmail()),
-            $this->passwordEncoder->encode($memberSignUp->getPassword(), uniqid())
+            new Email($memberSignUp->email),
+            $this->passwordEncoder->encode($memberSignUp->password, sha1(uniqid()))
         );
     }
 }

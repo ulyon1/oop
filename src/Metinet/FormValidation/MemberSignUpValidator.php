@@ -4,7 +4,7 @@ namespace Metinet\FormValidation;
 
 class MemberSignUpValidator
 {
-    public function validate(MemberSignUp $memberSignUp): array
+    public function validate(MemberSignUp $memberSignUp): ValidatorResults
     {
         $errors = [];
 
@@ -36,6 +36,6 @@ class MemberSignUpValidator
             $errors[] = 'Password must be at least 1 char';
         }
 
-        return $errors;
+        return new ValidatorResults($errors);
     }
 }

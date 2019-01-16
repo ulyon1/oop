@@ -7,10 +7,18 @@ use Metinet\Core\Config\LoggerFactory;
 use Metinet\Core\Config\RouteCollectionFactory;
 use Metinet\Core\Logger\Logger;
 use Metinet\Core\Routing\RouteCollection;
+use Metinet\Core\Security\PasswordEncoder;
+use Metinet\Core\Security\PlainTextPasswordEncoder;
+use Metinet\Core\Security\Sha1PasswordEncoder;
+use Metinet\Domain\Members\MemberFactory;
+use Metinet\Repositories\MemberInMemoryRepository;
+use Metinet\Repositories\MemberRepository;
+use Metinet\Repositories\MemberSerializedFileRepository;
 
 class DependencyManager
 {
     private $configuration;
+    private $dependencies = [];
 
     public function __construct(Configuration $configuration)
     {
@@ -43,5 +51,39 @@ class DependencyManager
         }
 
         return $twig;
+    }
+
+    public function getPasswordEncoder(): PasswordEncoder
+    {
+        $passwordEncoderId = $this->configuration->getSection('security')['passwordEncoder'];
+
+        switch ($passwordEncoderId) {
+            case 'sha1':
+                return new Sha1PasswordEncoder();
+            case 'plain':
+                return new PlainTextPasswordEncoder();
+            default:
+                throw new \LogicException(sprintf('Unknown Security Encoder: "%s"', $passwordEncoderId));
+        }
+    }
+
+    public function getMemberFactory(): MemberFactory
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new MemberFactory($this->getPasswordEncoder());
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getMemberRepository(): MemberRepository
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new MemberSerializedFileRepository(
+                $this->configuration->getSection('repositories')['members']['serializedStorage']['path']
+            );
+        }
+
+        return $this->dependencies[__METHOD__];
     }
 }
