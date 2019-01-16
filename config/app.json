@@ -16,6 +16,11 @@
       "serializedStorage": {
         "path": "../var/storage/members.php"
       }
+    },
+    "blogArticle": {
+      "serializedStorage": {
+        "path": "../var/storage/blogArticle.php"
+      }
     }
   }
 }

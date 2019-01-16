@@ -50,4 +50,9 @@ class Member implements Account
     {
         return $this->encodedPassword;
     }
+
+    public function getProfileName(): string
+    {
+        return $this->profile->getFirstName().' '.$this->profile->getLastName();
+    }
 }

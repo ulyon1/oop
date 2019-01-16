@@ -16,7 +16,8 @@ use Metinet\Core\Security\Sha1PasswordEncoder;
 use Metinet\Core\Session\NativeSession;
 use Metinet\Core\Session\Session;
 use Metinet\Domain\Members\MemberFactory;
-use Metinet\Repositories\MemberInMemoryRepository;
+use Metinet\Repositories\BlogArticleRepository;
+use Metinet\Repositories\BlogArticleSerializedFileRepository;
 use Metinet\Repositories\MemberRepository;
 use Metinet\Repositories\MemberSerializedFileRepository;
 
@@ -130,6 +131,17 @@ class DependencyManager
         if (!isset($this->dependencies[__METHOD__])) {
             $this->dependencies[__METHOD__] = new AuthenticationContext(
                 $this->getSession()
+            );
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getBlogArticleRepository(): BlogArticleRepository
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new BlogArticleSerializedFileRepository(
+                $this->configuration->getSection('repositories')['blogArticle']['serializedStorage']['path']
             );
         }
 

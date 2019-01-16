@@ -24,12 +24,6 @@ class Conference
         $this->attendees = [];
     }
 
-    public function getSeatsAvailable(): int
-    {
-        return $this->seatsAvailable;
-        $this->maxAttendees = $maxAttendees;
-    }
-
     public function register(Attendee $attendee): void
     {
         $this->ensureConferenceHasNotReachedMaxAttendees();

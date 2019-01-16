@@ -5,32 +5,31 @@
 
         <div class="row">
 
-            <!-- Post Content Column -->
-            <div class="col-lg-8">
+            {% for post in latestPosts %}
 
-                <!-- Title -->
-                <h1 class="mt-4">Post Title</h1>
+                <!-- Post Content Column -->
+                <div class="col-lg-8">
 
-                <!-- Author -->
-                <p class="lead">
-                    by
-                    <a href="#">Start Bootstrap</a>
-                </p>
+                    <!-- Title -->
+                    <h1 class="mt-4">{{ post.title }}</h1>
 
-                <hr>
+                    <!-- Author -->
+                    <p class="lead">
+                        by
+                        <a href="#">{{ post.author.getProfileName }}</a>
+                    </p>
 
-                <!-- Date/Time -->
-                <p>Posted on January 1, 2018 at 12:00 PM</p>
+                    <hr>
 
-                <blockquote class="blockquote">
-                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                </blockquote>
-            </div>
+                    <!-- Date/Time -->
+                    <p>Posted : {{ post.postDate|date("d/m/Y") }}</p>
 
+                    <blockquote class="blockquote">
+                        <p class="mb-0">{{ post.body }}</p>
+                    </blockquote>
+                </div>
+            {% endfor %}
         </div>
-        <!-- /.row -->
-
     </div>
     <!-- /.container -->
-
 {% endblock %}
