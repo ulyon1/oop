@@ -19,6 +19,16 @@
       "methods": ["GET"],
       "path": "/signout",
       "action": "Metinet:Controllers:SecurityController::signOut"
+    },
+    {
+      "methods": ["GET"],
+      "path": "/blog",
+      "action": "Metinet:Controllers:BlogController::latestPosts"
+    },
+    {
+      "methods": ["GET", "POST"],
+      "path": "/blog/new-post",
+      "action": "Metinet:Controllers:BlogController::newBlogPost"
     }
   ]
 }
