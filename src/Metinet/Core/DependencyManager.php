@@ -7,9 +7,14 @@ use Metinet\Core\Config\LoggerFactory;
 use Metinet\Core\Config\RouteCollectionFactory;
 use Metinet\Core\Logger\Logger;
 use Metinet\Core\Routing\RouteCollection;
+use Metinet\Core\Security\AccountAuthenticator;
+use Metinet\Core\Security\AccountProvider;
+use Metinet\Core\Security\AuthenticationContext;
 use Metinet\Core\Security\PasswordEncoder;
 use Metinet\Core\Security\PlainTextPasswordEncoder;
 use Metinet\Core\Security\Sha1PasswordEncoder;
+use Metinet\Core\Session\NativeSession;
+use Metinet\Core\Session\Session;
 use Metinet\Domain\Members\MemberFactory;
 use Metinet\Repositories\MemberInMemoryRepository;
 use Metinet\Repositories\MemberRepository;
@@ -41,7 +46,7 @@ class DependencyManager
 
         $loader = new \Twig_Loader_Filesystem($this->configuration->getSection('twig')['viewsPath']);
         $twig = new \Twig_Environment($loader, [
-            'debug' => $debug
+            'debug' => $debug,
         ]);
 
         $twig->addExtension(new \Twig_Extensions_Extension_Date());
@@ -49,6 +54,8 @@ class DependencyManager
         if ($debug) {
             $twig->addExtension(new \Twig_Extension_Debug());
         }
+
+        $twig->addGlobal('account', $this->getSession()->get('account'));
 
         return $twig;
     }
@@ -81,6 +88,48 @@ class DependencyManager
         if (!isset($this->dependencies[__METHOD__])) {
             $this->dependencies[__METHOD__] = new MemberSerializedFileRepository(
                 $this->configuration->getSection('repositories')['members']['serializedStorage']['path']
+            );
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getAccountProvider(): AccountProvider
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = $this->getMemberRepository();
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getSession(): Session
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new NativeSession();
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getAccountAuthenticator(): AccountAuthenticator
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new AccountAuthenticator(
+                $this->getAccountProvider(),
+                $this->getPasswordEncoder(),
+                $this->getSession()
+            );
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getAuthenticationContext(): AuthenticationContext
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new AuthenticationContext(
+                $this->getSession()
             );
         }
 

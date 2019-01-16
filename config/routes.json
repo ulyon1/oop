@@ -9,6 +9,16 @@
       "methods": ["GET", "POST"],
       "path": "/signup",
       "action": "Metinet:Controllers:MembersController::signUp"
+    },
+    {
+      "methods": ["GET", "POST"],
+      "path": "/signin",
+      "action": "Metinet:Controllers:SecurityController::signIn"
+    },
+    {
+      "methods": ["GET"],
+      "path": "/signout",
+      "action": "Metinet:Controllers:SecurityController::signOut"
     }
   ]
 }

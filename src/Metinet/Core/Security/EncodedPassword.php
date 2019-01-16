@@ -27,4 +27,9 @@ class EncodedPassword
     {
         return sprintf('%s{%s}', $this->encodedPassword, $this->salt);
     }
+
+    public function equals(EncodedPassword $password): bool
+    {
+        return $this->encodedPassword === $password->encodedPassword;
+    }
 }
