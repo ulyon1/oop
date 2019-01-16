@@ -16,18 +16,19 @@ class MembersController extends BaseController
         if ($request->isPost()) {
 
             $memberSignUpValidator = new MemberSignUpValidator();
-            $errors = $memberSignUpValidator->validate($signUp);
+            $validationResults = $memberSignUpValidator->validate($signUp);
 
-            if (0 === \count($errors)) {
+            if (!$validationResults->hasErrors()) {
 
                 $member = $this->dependencyManager->getMemberFactory()->fromSignUp($signUp);
+                $this->dependencyManager->getMemberRepository()->save($member);
 
                 return $this->redirect('/');
             }
         }
 
         return $this->renderResponse('members/signUp.html.twig', [
-            'errors' => $errors ?? [],
+            'errors' => $validationResults->all() ?? [],
             'signUp' => $signUp
         ]);
     }

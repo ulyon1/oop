@@ -10,5 +10,12 @@
   },
   "security": {
     "passwordEncoder": "sha1"
+  },
+  "repositories": {
+    "members": {
+      "serializedStorage": {
+        "path": "../var/members.php"
+      }
+    }
   }
 }

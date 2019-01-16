@@ -11,10 +11,14 @@ use Metinet\Core\Security\PasswordEncoder;
 use Metinet\Core\Security\PlainTextPasswordEncoder;
 use Metinet\Core\Security\Sha1PasswordEncoder;
 use Metinet\Domain\Members\MemberFactory;
+use Metinet\Repositories\MemberInMemoryRepository;
+use Metinet\Repositories\MemberRepository;
+use Metinet\Repositories\MemberSerializedFileRepository;
 
 class DependencyManager
 {
     private $configuration;
+    private $dependencies = [];
 
     public function __construct(Configuration $configuration)
     {
@@ -65,6 +69,21 @@ class DependencyManager
 
     public function getMemberFactory(): MemberFactory
     {
-        return new MemberFactory($this->getPasswordEncoder());
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new MemberFactory($this->getPasswordEncoder());
+        }
+
+        return $this->dependencies[__METHOD__];
+    }
+
+    public function getMemberRepository(): MemberRepository
+    {
+        if (!isset($this->dependencies[__METHOD__])) {
+            $this->dependencies[__METHOD__] = new MemberSerializedFileRepository(
+                $this->configuration->getSection('repositories')['members']['serializedStorage']['path']
+            );
+        }
+
+        return $this->dependencies[__METHOD__];
     }
 }
