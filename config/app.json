@@ -14,7 +14,7 @@
   "repositories": {
     "members": {
       "serializedStorage": {
-        "path": "../var/members.php"
+        "path": "../var/storage/members.php"
       }
     }
   }
