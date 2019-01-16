@@ -14,7 +14,6 @@ class MembersController extends BaseController
         $signUp = MemberSignUp::fromRequest($request);
 
         if ($request->isPost()) {
-
             $memberSignUpValidator = new MemberSignUpValidator();
             $validationResults = $memberSignUpValidator->validate($signUp);
 
@@ -28,7 +27,7 @@ class MembersController extends BaseController
         }
 
         return $this->renderResponse('members/signUp.html.twig', [
-            'errors' => $validationResults->all() ?? [],
+            'errors' => isset($validationResults)? $validationResults->all() : [],
             'signUp' => $signUp
         ]);
     }
