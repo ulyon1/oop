@@ -27,7 +27,7 @@ class MembersController extends BaseController
         }
 
         return $this->renderResponse('members/signUp.html.twig', [
-            'errors' => isset($validationResults)? $validationResults->all() : [],
+            'errors' => $validationResults ?? [],
             'signUp' => $signUp
         ]);
     }

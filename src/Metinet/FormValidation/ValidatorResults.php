@@ -2,7 +2,7 @@
 
 namespace Metinet\FormValidation;
 
-class ValidatorResults implements \Iterator
+class ValidatorResults implements \IteratorAggregate
 {
     private $errors;
 
@@ -11,40 +11,14 @@ class ValidatorResults implements \Iterator
         $this->errors = $errors;
     }
 
-    public function all(): array
-    {
-        return $this->errors;
-    }
-
     public function hasErrors(): bool
     {
         return (bool) \count($this->errors);
     }
 
-    public function current()
+    public function getIterator()
     {
-        return current($this->errors);
+        return new \ArrayIterator($this->errors);
     }
-
-    public function next()
-    {
-        next($this->errors);
-    }
-
-    public function key()
-    {
-        return key($this->errors);
-    }
-
-    public function valid()
-    {
-        return key($this->errors);
-    }
-
-    public function rewind()
-    {
-        reset($this->errors);
-    }
-
 
 }
