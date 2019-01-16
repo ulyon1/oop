@@ -2,11 +2,18 @@
 
 namespace Metinet\Repositories;
 
+use Metinet\Core\Security\Account;
+use Metinet\Core\Security\AccountNotFound;
+use Metinet\Core\Security\AccountProvider;
+use Metinet\Domain\Email;
 use Metinet\Domain\Members\Member;
 
-class MemberSerializedFileRepository implements MemberRepository
+class MemberSerializedFileRepository implements MemberRepository, AccountProvider
 {
     private $path;
+    /**
+     * @var Member[]
+     */
     private $members = [];
 
     public function __construct(string $path)
@@ -40,6 +47,19 @@ class MemberSerializedFileRepository implements MemberRepository
 
         unset($this->members[$member->getId()]);
         $this->persist();
+    }
+
+    public function findByUsername(string $username): Account
+    {
+        foreach ($this->members as $member) {
+
+            if ($member->getEmail()->equals(new Email($username))) {
+
+                return $member;
+            }
+        }
+
+        throw new AccountNotFound($username);
     }
 
     private function persist(): void

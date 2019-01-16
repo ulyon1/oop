@@ -2,10 +2,11 @@
 
 namespace Metinet\Domain\Members;
 
+use Metinet\Core\Security\Account;
 use Metinet\Core\Security\EncodedPassword;
 use Metinet\Domain\Email;
 
-class Member
+class Member implements Account
 {
     private $id;
     private $profile;
@@ -35,7 +36,12 @@ class Member
         return $this->profile;
     }
 
-    public function getEmail(): string
+    public function getEmail(): Email
+    {
+        return $this->email;
+    }
+
+    public function getUsername(): string
     {
         return (string) $this->email;
     }

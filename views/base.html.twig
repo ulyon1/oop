@@ -33,18 +33,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="/">Project name</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
+            {% if not account %}
+            <a class="btn btn-success navbar-btn navbar-right" href="/signup">Sign Up</a>
+            <a class="btn btn-success navbar-btn navbar-right" href="/signin">Sign In</a>
+            {% else %}
+                <a class="btn btn-danger navbar-btn navbar-right" href="/signout">Sign out</a>
+                <p class="btn btn-success navbar-btn navbar-right">Signed in as {{ account.username }}</p>
+            {% endif %}
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
