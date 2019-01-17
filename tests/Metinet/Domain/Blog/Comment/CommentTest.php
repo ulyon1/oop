@@ -4,9 +4,16 @@ namespace Metinet\Domain\Blog\Comment;
 
 use PHPUnit\Framework\TestCase;
 
+/** Trick to mock time in tests */
+function time()
+{
+    return CommentTest::$now ?: \time();
+}
 
 class CommentTest extends TestCase
 {
+    static $now;
+
     public function testACommentCanBePosted(): void
     {
         $body = 'Lorem ipsum dolor sid amet';
@@ -20,17 +27,33 @@ class CommentTest extends TestCase
 
     public function testACommentCannotBeEditedAfter3Minutes(): void
     {
+        self::$now = time() - 4 * 60;
+        $comment = Comment::post('Pline', 'Lorem ipsum dolor sid amet');
+        self::$now = null;
 
+        $this->expectException(UnableToEditComment::class);
+        $this->expectExceptionMessageRegExp('/Comment can only be edited for \d+ seconds/');
+
+        $comment->edit('Amet sid dolor ipsum lorem');
     }
 
     public function testACommentCanBeEditedDuring3Minutes(): void
     {
-
+        $comment = Comment::post('Pline', 'Lorem ipsum dolor sid amet');
+        $editedBody = 'Amet sid dolor ipsum lorem';
+        $comment->edit($editedBody);
+        $this->assertEquals($editedBody, $comment->getBody());
     }
 
     public function testACommentCannotBeDeletedAfter10Minutes(): void
     {
+        $this->expectException(UnableToDeleteComment::class);
+        $this->expectExceptionMessageRegExp('/Comment can only be deleted for \d+ seconds/');
 
+        self::$now = time() - 11 * 60;
+        $comment = Comment::post('Pline', 'Lorem ipsum dolor sid amet');
+        self::$now = null;
+        $comment->delete('Some reason');
     }
 
     public function testACommentCannotBePostedWithBadWords(): void
@@ -45,14 +68,17 @@ class CommentTest extends TestCase
 
     public function testADeletionReasonMustBeProvidedWhenDeletingAComment(): void
     {
+        $comment = Comment::post('Pline', 'Lorem ipsum dolor sid amet');
+        $deletionReason = 'Being an asshole';
+        $comment->delete($deletionReason);
 
+        $this->assertEquals($deletionReason, $comment->getDeletionReason());
     }
 
     public function testACommentCannotHaveAnEmptyBody(): void
     {
-        $this->expectException(UnableToPostComment::class);
-
-        $this->expectExceptionMessage('Cannot post a Comment with an empty body');
+        $this->expectException(InvalidCommentBody::class);
+        $this->expectExceptionMessage('Comment cannot have an empty body');
         $emptyBody = '';
         $author = 'Pline';
         $comment = Comment::post($emptyBody, $author);
@@ -62,6 +88,9 @@ class CommentTest extends TestCase
 
     public function testACommentCannotHaveABodyExceeding500Characters(): void
     {
+        $this->expectException(InvalidCommentBody::class);
+        $this->expectExceptionMessage('Comment cannot have a body exceeding 500 characters');
 
+        Comment::post(str_repeat('x', 501), 'Pline');
     }
 }
