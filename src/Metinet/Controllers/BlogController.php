@@ -6,6 +6,7 @@ use Metinet\Core\Http\Request;
 use Metinet\Core\Http\Response;
 use Metinet\Core\Security\Unauthorized;
 use Metinet\Domain\Blog\BlogArticle;
+use Metinet\Domain\Blog\Comment\Comment;
 use Metinet\Domain\Members\Member;
 
 class BlogController extends BaseController
@@ -19,9 +20,11 @@ class BlogController extends BaseController
            throw Unauthorized::memberNotLoggedIn();
         }
 
-        $member = $this->dependencyManager->getAuthenticationContext()->getAccount();
+        //$member = $this->dependencyManager->getAuthenticationContext()->getAccount();
 
-        //$blogArt = new BlogArticle($member, "Le système D, explications", "incroyable (New York Post) - sensationnel (Le Nouvel Obs)", new \DateTimeImmutable("05-08-2015"));
+        //$blogArt = new BlogArticle($member, "Klaxoon, meilleure app web", "orlme msupi", new \DateTimeImmutable("05-08-2015"));
+        //$blogArt->addComment(Comment::post('Le gras, c\'est la vie', "Karadoc"));
+        //$blogArt->addComment(Comment::post('oui mais j\'aime pas les harengs.', "Perceval"));
 
         //$blogArtRepo->save($blogArt);
 

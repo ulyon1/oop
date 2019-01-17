@@ -22,10 +22,17 @@
                     <hr>
 
                     <!-- Date/Time -->
-                    <p>Posted : {{ post.postDate|date("d/m/Y") }}</p>
+                    <p>Posted : {{ post.postDate("d/m/Y") }}</p>
 
                     <blockquote class="blockquote">
                         <p class="mb-0">{{ post.body }}</p>
+                        {% if post.comments|length > 0 %}
+                            <ul style="font-size: 1.2rem;">
+                                {% for comment in post.comments %}
+                                    <li>{{ comment.body }}<small>{{ comment.author }}</small></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </blockquote>
                 </div>
             {% endfor %}

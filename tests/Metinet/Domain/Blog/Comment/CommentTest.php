@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 /** Trick to mock time in tests */
 function time()
 {
-    return CommentTest::$now ?: \time();
+    return FreelancerTest::$now ?: \time();
 }
 
 class CommentTest extends TestCase

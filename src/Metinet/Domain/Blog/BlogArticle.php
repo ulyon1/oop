@@ -3,6 +3,7 @@
 namespace Metinet\Domain\Blog;
 
 
+use Metinet\Domain\Blog\Comment\Comment;
 use Metinet\Domain\Members\Member;
 
 class BlogArticle
@@ -11,6 +12,7 @@ class BlogArticle
     private $title;
     private $body;
     private $postDate;
+    private $comments;
 
     /**
      * BlogArticle constructor.
@@ -26,6 +28,7 @@ class BlogArticle
         $this->title = $title;
         $this->body = $body;
         $this->postDate = $postDate;
+        $this->comments = [];
     }
 
     public function getId(): string
@@ -57,5 +60,18 @@ class BlogArticle
         return $this->body;
     }
 
+    public function getPostDate(string $format): string
+    {
+        return $this->postDate->format($format);
+    }
 
+    public function addComment(Comment $comment): void
+    {
+        $this->comments[] = $comment;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }
