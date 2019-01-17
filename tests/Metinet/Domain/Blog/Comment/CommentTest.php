@@ -1,11 +1,9 @@
 <?php
 
-namespace Metinet\Tests\Metinet\Domain\Blog\Comment;
+namespace Metinet\Domain\Blog\Comment;
 
-use Metinet\Domain\Blog\Comment\BadWordsDetected;
-use Metinet\Domain\Blog\Comment\UnableToPostComment;
 use PHPUnit\Framework\TestCase;
-use Metinet\Domain\Blog\Comment\Comment;
+
 
 class CommentTest extends TestCase
 {
