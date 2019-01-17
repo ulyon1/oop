@@ -8,6 +8,7 @@ class Comment
     private $author;
     private $postedOn;
     private $deletionReason;
+    private $deletionDate;
 
     private const DELAY_TO_EDIT_IN_SECONDS = 60 * 3;
     private const DELAY_TO_DELETE_IN_SECONDS = 60 * 10;
@@ -19,6 +20,11 @@ class Comment
 
     public function edit(string $body): void
     {
+        if (!empty($this->deletionReason)) {
+
+            throw UnableToEditComment::cannotEditADeletedComment();
+        }
+
         $now = \DateTimeImmutable::createFromFormat('U', time(), new \DateTimeZone('UTC'))->format('U');
         $postedOnTime = $this->postedOn->format('U');
 
@@ -41,6 +47,7 @@ class Comment
         }
 
         $this->deletionReason = $deletionReason;
+        $this->deletionDate = \DateTimeImmutable::createFromFormat('U', time(), new \DateTimeZone('UTC'));
     }
 
     public function getDeletionReason(): string

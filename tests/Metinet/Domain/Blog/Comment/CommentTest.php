@@ -7,12 +7,12 @@ use PHPUnit\Framework\TestCase;
 /** Trick to mock time in tests */
 function time()
 {
-    return CommentTest::$now ?: \time();
+    return CommentTest::$now ?? \time();
 }
 
 class CommentTest extends TestCase
 {
-    static $now;
+    public static $now;
 
     public function testACommentCanBePosted(): void
     {
@@ -34,6 +34,16 @@ class CommentTest extends TestCase
         $this->expectException(UnableToEditComment::class);
         $this->expectExceptionMessageRegExp('/Comment can only be edited for \d+ seconds/');
 
+        $comment->edit('Amet sid dolor ipsum lorem');
+    }
+
+    public function testACommentCannotBeEditedIfDeleted(): void
+    {
+        $this->expectException(UnableToEditComment::class);
+        $this->expectExceptionMessage('A comment cannot be edited if it has been deleted');
+
+        $comment = Comment::post('Pline', 'Lorem ipsum dolor sid amet');
+        $comment->delete('No reason');
         $comment->edit('Amet sid dolor ipsum lorem');
     }
 
@@ -62,8 +72,7 @@ class CommentTest extends TestCase
         $this->expectExceptionMessage('Bad words have been detected in your comment');
 
         $bodyWithBadWords = 'You are such a scumbag full of shit';
-        $author = 'Pline';
-        Comment::post($bodyWithBadWords, $author);
+        Comment::post($bodyWithBadWords, 'Pline');
     }
 
     public function testADeletionReasonMustBeProvidedWhenDeletingAComment(): void
@@ -80,10 +89,7 @@ class CommentTest extends TestCase
         $this->expectException(InvalidCommentBody::class);
         $this->expectExceptionMessage('Comment cannot have an empty body');
         $emptyBody = '';
-        $author = 'Pline';
-        $comment = Comment::post($emptyBody, $author);
-
-        $this->assertNotEmpty($comment->getBody());
+        Comment::post($emptyBody, 'Pline');
     }
 
     public function testACommentCannotHaveABodyExceeding500Characters(): void
