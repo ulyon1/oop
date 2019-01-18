@@ -43,6 +43,17 @@ class BankAccountTest extends TestCase
     	$account->addOperation($deposit);
     }
 
+    public function testEnsureACustomerCannotDepositAnAmountExpressedInOtherCurrency(): void
+    {
+    	$this->expectException(OperationFailed::class);
+    	$this->expectExceptionMessage('You cannot deposit an amount expressed in another currency');
+
+        $account = new BankAccount('John', 'Smith', Money::USD(0));
+    	$deposit = new Deposit(Money::EUR(50));
+
+    	$account->addOperation($deposit);
+    }
+
     public function testEnsureACustomerCanWithdrawMoney(): void
     {
         $this->assertTrue(true);
@@ -54,6 +65,16 @@ class BankAccountTest extends TestCase
     }
 
     public function testEnsureACustomerCannotWithdrawANegativeValue(): void
+    {
+        $this->assertTrue(true);
+    }
+
+    public function testEnsureACustomerCannotWithdrawAZeroValue(): void
+    {
+        $this->assertTrue(true);
+    }
+
+    public function testEnsureACustomerCannotWithdrawAnAmountExpressedInOtherCurrency(): void
     {
         $this->assertTrue(true);
     }

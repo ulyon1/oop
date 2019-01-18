@@ -13,4 +13,9 @@ class OperationFailed extends \Exception
 	{
 		return new self('The deposit amount must be greater than 0');
 	}
+
+	public static function cannotDepositAmountExpressedInOtherCurrency(): self
+	{
+		return new self('You cannot deposit an amount expressed in another currency');
+	}
 }

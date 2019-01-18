@@ -34,6 +34,9 @@ class Deposit implements Operation
 		if($this->depositAmount->isZero())
 			throw OperationFailed::cannotDepositZeroValue();
 
+		if(!$this->depositAmount->isSameCurrency($balance))
+			throw OperationFailed::cannotDepositAmountExpressedInOtherCurrency();
+
 		return $balance->add($this->depositAmount);
 	}
 }
