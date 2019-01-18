@@ -7,6 +7,7 @@ use Money\Money;
 
 use Metinet\Domain\BankAccount;
 use Metinet\Domain\Operation\Deposit;
+use Metinet\Domain\Operation\Withdraw;
 use Metinet\Domain\Operation\OperationFailed;
 
 class BankAccountTest extends TestCase
@@ -56,7 +57,12 @@ class BankAccountTest extends TestCase
 
     public function testEnsureACustomerCanWithdrawMoney(): void
     {
-        $this->assertTrue(true);
+        $account = new BankAccount('John', 'Smith', Money::EUR(50));
+    	$withdraw = new Withdraw(Money::EUR(5));
+
+    	$account->addOperation($withdraw);
+
+        $this->assertTrue($account->getBalance()->equals(Money::EUR(45)));
     }
 
     public function testEnsureACustomerCannotWithdrawMoreThanHisCredit(): void
