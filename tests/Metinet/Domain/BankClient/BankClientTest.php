@@ -17,17 +17,33 @@ class BankClientTest extends TestCase
 
     }
 
-    public function testABankClientCanDoADeposit()
+    public function testABankClientCannotDoANullDeposit()
     {
 
     }
 
-    public function testABankClientCanDoAWithdraw()
+    public function testABankClientCannotDoANegativeDeposit()
     {
 
     }
 
-    public function testABankClientCanTakeALookOnHisHistory(){
+    public function testABankClientCannotDoANullWithdraw()
+    {
+
+    }
+
+    public function testABankClientCannotDoANegativeWithdraw()
+    {
+
+    }
+
+    public function testABankClientCannotWithdrawWhenAccountIsUnder500()
+    {
+
+    }
+
+    public function testABankClientCanTakeALookOnHisHistory()
+    {
 
     }
 
