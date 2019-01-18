@@ -78,7 +78,13 @@ class BankAccountTest extends TestCase
 
     public function testEnsureACustomerCannotWithdrawANegativeValue(): void
     {
-        $this->assertTrue(true);
+        $this->expectException(OperationFailed::class);
+    	$this->expectExceptionMessage('You can\'t withdraw a negative amount');
+
+        $account = new BankAccount('John', 'Smith');
+    	$withdraw = new Withdraw(Money::EUR(-5));
+
+    	$account->addOperation($withdraw);
     }
 
     public function testEnsureACustomerCannotWithdrawAZeroValue(): void

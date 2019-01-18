@@ -23,4 +23,9 @@ class OperationFailed extends \Exception
 	{
 		return new self('Your account credit is too low to withdraw this amount');
 	}
+
+	public static function cannotWithdrawNegativeValue(): self
+	{
+		return new self('You can\'t withdraw a negative amount');
+	}
 }

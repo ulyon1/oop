@@ -27,6 +27,9 @@ class Withdraw implements Operation
 
 	public function executeOnBalance(Money $balance): Money
 	{
+		if($this->withdrawAmount->isNegative())
+			throw OperationFailed::cannotWithdrawNegativeValue();
+
 		if($balance->lessThan($this->withdrawAmount))
 			throw OperationFailed::cannotWithdrawMoreThanAccountCredit();
 
