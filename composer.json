@@ -4,15 +4,11 @@
     "require": {
         "php": "^7.2",
         "beberlei/assert": "^2.8",
-        "doctrine/dbal": "^2.6",
         "mathiasverraes/classfunctions": "^1.1",
-        "phpunit/phpunit": "^7.5",
-        "twig/extensions": "^1.5",
-        "twig/twig": "^2.0"
+        "moneyphp/money": "^3.2",
+        "phpunit/phpunit": "^7.5"
     },
     "require-dev": {
-        "ramsey/uuid-console": "^1.1",
-        "roave/security-advisories": "dev-master"
     },
     "config": {
         "preferred-install": {
@@ -28,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Metinet\\Tests\\": "tests/"
+            "Metinet\\": "tests/Metinet"
         }
     },
     "replace": {
