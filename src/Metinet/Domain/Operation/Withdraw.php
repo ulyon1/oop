@@ -33,6 +33,9 @@ class Withdraw implements Operation
 		if($this->withdrawAmount->isZero())
 			throw OperationFailed::cannotWithdrawZeroValue();
 
+		if(!$this->withdrawAmount->isSameCurrency($balance))
+			throw OperationFailed::cannotWithdrawAmountExpressedInOtherCurrency();
+
 		if($balance->lessThan($this->withdrawAmount))
 			throw OperationFailed::cannotWithdrawMoreThanAccountCredit();
 

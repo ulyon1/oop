@@ -33,4 +33,9 @@ class OperationFailed extends \Exception
 	{
 		return new self('The withdraw amount must be greater than 0');
 	}
+
+	public static function cannotWithdrawAmountExpressedInOtherCurrency(): self
+	{
+		return new self('You cannot withdraw an amount expressed in another currency');
+	}
 }

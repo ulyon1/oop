@@ -100,7 +100,13 @@ class BankAccountTest extends TestCase
 
     public function testEnsureACustomerCannotWithdrawAnAmountExpressedInOtherCurrency(): void
     {
-        $this->assertTrue(true);
+        $this->expectException(OperationFailed::class);
+    	$this->expectExceptionMessage('You cannot withdraw an amount expressed in another currency');
+
+        $account = new BankAccount('John', 'Smith', Money::USD(50));
+    	$withdraw = new Withdraw(Money::EUR(30));
+
+    	$account->addOperation($withdraw);
     }
 
     public function testEnsureACustomerCanSeeHistoryOfOperations(): void
