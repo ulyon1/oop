@@ -14,16 +14,20 @@ class BankAccount
 
     private $bankClient;
     /**
-     * @var Deposit[]
+     * @var BankOperation[]
      */
-    private $listDeposit;
+    private $operations;
 
     public static function createAccount(BankClient $bankClient):self {
         return new self($bankClient);
     }
 
-    public function makeDeposit(Deposit $deposit):void {
-        $this->listDeposit[] = $deposit;
+    public function makeDeposit(BankOperation $deposit):void {
+        $this->operations[] = $deposit;
+    }
+
+    public function makeWithdrawal(BankOperation $withdrawal):void {
+        $this->operations[] = $withdrawal;
     }
 
     public function getBankClient(): BankClient
@@ -31,15 +35,36 @@ class BankAccount
         return $this->bankClient;
     }
 
-    public function getListDeposit(): array
+    public function getListOperations(): array
     {
-        return $this->listDeposit;
+        return $this->operations;
     }
 
-    public function getLastDeposit():Deposit
+    public function getLastOperation():BankOperation
     {
-        $indexLastElement = count($this->listDeposit) - 1;
-        return $this->getListDeposit()[$indexLastElement];
+        $indexLastElement = count($this->operations) - 1;
+        return $this->operations[$indexLastElement];
+    }
+
+    public function getLastDeposit():?BankOperation
+    {
+        for ($i = count($this->operations) - 1; $i >= 0; $i-- ){
+            if ($this->operations[$i] instanceof Deposit){
+                return $this->operations[$i];
+            }
+        }
+        return null;
+    }
+
+    public function getLastWithdrawal():?BankOperation
+    {
+        dump($this->operations);
+        for ($i = count($this->operations) - 1; $i >= 0; $i-- ){
+            if ($this->operations[$i] instanceof Withdrawal){
+                return $this->operations[$i];
+            }
+        }
+        return null;
     }
 
     private function __construct(BankClient $bankClient)

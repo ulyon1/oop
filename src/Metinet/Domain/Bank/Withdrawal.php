@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: lp
  * Date: 18/01/2019
- * Time: 09:27
+ * Time: 09:42
  */
 
 namespace Metinet\Domain\Bank;
@@ -11,10 +11,11 @@ namespace Metinet\Domain\Bank;
 
 use Money\Money;
 
-class Deposit implements BankOperation {
+class Withdrawal implements BankOperation
+{
 
     private $money;
-    private $dateDeposit;
+    private $date;
 
     public static function create(Money $money):BankOperation {
         return new self($money);
@@ -27,12 +28,14 @@ class Deposit implements BankOperation {
 
     public function getDate():\DateTimeImmutable
     {
-        return $this->dateDeposit;
+        return $this->date;
     }
 
     private function __construct(Money $money)
     {
-        $this->dateDeposit = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
+        $this->date = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
         $this->money = $money;
     }
+
+
 }
