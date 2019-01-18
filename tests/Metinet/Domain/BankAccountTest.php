@@ -7,6 +7,7 @@ use Money\Money;
 
 use Metinet\Domain\BankAccount;
 use Metinet\Domain\Operation\Deposit;
+use Metinet\Domain\Operation\OperationFailed;
 
 class BankAccountTest extends TestCase
 {
@@ -22,7 +23,13 @@ class BankAccountTest extends TestCase
 
     public function testEnsureACustomerCannotDepositANegativeValue(): void
     {
-        $this->assertTrue(true);
+    	$this->expectException(OperationFailed::class);
+    	$this->expectExceptionMessage('You can\'t deposit a negative amount');
+
+        $account = new BankAccount('John', 'Smith');
+    	$deposit = new Deposit(Money::EUR(-5));
+
+    	$account->addOperation($deposit);
     }
 
     public function testEnsureACustomerCanWithdrawMoney(): void

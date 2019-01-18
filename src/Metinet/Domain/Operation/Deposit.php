@@ -8,6 +8,7 @@ class Deposit implements Operation
 {
 	private $depositAmount;
 	private $depositTime;
+	private $balanceAfter;
 
 	public function __construct(Money $depositAmount, ?\DateTimeImmutable $depositTime = null)
 	{
@@ -27,6 +28,9 @@ class Deposit implements Operation
 
 	public function executeOnBalance(Money $balance): Money
 	{
+		if($this->depositAmount->isNegative())
+			throw OperationFailed::cannotDepositNegativeValue();
+
 		return $balance->add($this->depositAmount);
 	}
 }
