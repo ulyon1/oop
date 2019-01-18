@@ -6,11 +6,26 @@ class BankClient
 {
     private $firstName;
     private $lastName;
+    private $account;
 
     function __construct(string $firstName, string $lastName)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+    }
+
+    public function openAccount(string $currency, int $amount = 0): void
+    {
+        $this->account = new BankAccount($amount, $currency);
+    }
+
+    public function makeDeposit(int $amount): void
+    {
+        if( $amount === 0 ){
+            throw new \Exception("The deposit amount must be over 0");
+        }
+
+        $this->account->deposit($amount);
     }
 
     public function getFirstName(): string
@@ -21,5 +36,10 @@ class BankClient
     public function getLastName(): string
     {
         return $this->lastName;
+    }
+
+    public function getAccount(): BankAccount
+    {
+        return $this->account;
     }
 }

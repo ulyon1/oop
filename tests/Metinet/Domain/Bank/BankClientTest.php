@@ -38,4 +38,26 @@ class BankClientTest extends TestCase
         $this->assertEquals($newBankClient->getFirstName(), $bankClient->getFirstName());
         $this->assertEquals($newBankClient->getLastName(), $bankClient->getLastName());
     }
+
+    public function testAClientCanOpenAccount(): void
+    {
+        $bankClient = new BankClient("Mael", "Brevet");
+        $currency = 'Eur';
+        $bankClient->openAccount($currency);
+
+        $this->assertEquals($currency, $bankClient->getAccount()->getCurrency());
+    }
+
+    public function testAClientCanDoADepositInHisAccount(): void
+    {
+        $bankClient = new BankClient("Mael", "Brevet");
+        $bankClient->openAccount("Eur");
+
+        //En centimes
+        $depositAmount = 1340 * 100;
+
+        $bankClient->makeDeposit($depositAmount);
+
+        $this->assertEquals($depositAmount, $bankClient->getAccount()->getAmount());
+    }
 }
