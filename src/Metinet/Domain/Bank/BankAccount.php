@@ -9,6 +9,8 @@
 namespace Metinet\Domain\Bank;
 
 
+use Money\Money;
+
 class BankAccount
 {
 
@@ -20,6 +22,20 @@ class BankAccount
 
     public static function createAccount(BankClient $bankClient):self {
         return new self($bankClient);
+    }
+
+    public function getBalance():Money{
+        $balance = Money::EUR(0);
+        foreach ($this->operations as $operation){
+            if ($operation instanceof Deposit){
+                $balance = $balance->add($operation->getMoney());
+            }
+            elseif ($operation instanceof Withdrawal){
+                $balance = $balance->subtract($operation->getMoney());
+            }
+        }
+
+        return $balance;
     }
 
     public function makeDeposit(BankOperation $deposit):void {

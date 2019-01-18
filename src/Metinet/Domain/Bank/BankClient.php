@@ -31,8 +31,22 @@ class BankClient
 
     private function __construct(string $firstName, string $lastName)
     {
+        $this->ensureBankClientHasNotEmptyFirstName($firstName);
+        $this->ensureBankClientHasNotEmptyLastName($lastName);
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+    }
+
+    private function ensureBankClientHasNotEmptyFirstName($firstName){
+        if (empty($firstName)){
+            throw UnableToCreateBankClient::unableToCreateWithEmptyFirstName();
+        }
+    }
+
+    private function ensureBankClientHasNotEmptyLastName($lastName){
+        if (empty($lastName)){
+            throw UnableToCreateBankClient::unableToCreateWithEmptyLastName();
+        }
     }
 
 
