@@ -22,4 +22,20 @@ class BankClientTest extends TestCase
         $emptyBankName = "";
         $bank = new Bank($emptyBankName);
     }
+
+    public function testABankClientCannotHaveEmptyName(): void
+    {
+        //Ici je test que le client possède un nom et un prenom non vide
+    }
+
+    public function testABankCanAddBankClient(): void
+    {
+        $bank = new Bank('Crédit agricole');
+        $newBankClient = new BankClient("Mael", "Brevet");
+
+        $bankClient = $bank->addBankClient($newBankClient);
+
+        $this->assertEquals($newBankClient->getFirstName(), $bankClient->getFirstName());
+        $this->assertEquals($newBankClient->getLastName(), $bankClient->getLastName());
+    }
 }
