@@ -18,4 +18,9 @@ class OperationFailed extends \Exception
 	{
 		return new self('You cannot deposit an amount expressed in another currency');
 	}
+
+	public static function cannotWithdrawMoreThanAccountCredit(): self
+	{
+		return new self('Your account credit is too low to withdraw this amount');
+	}
 }

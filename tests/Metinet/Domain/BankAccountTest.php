@@ -67,7 +67,13 @@ class BankAccountTest extends TestCase
 
     public function testEnsureACustomerCannotWithdrawMoreThanHisCredit(): void
     {
-        $this->assertTrue(true);
+    	$this->expectException(OperationFailed::class);
+    	$this->expectExceptionMessage('Your account credit is too low to withdraw this amount');
+
+        $account = new BankAccount('John', 'Smith', Money::EUR(20));
+    	$withdraw = new Withdraw(Money::EUR(30));
+
+    	$account->addOperation($withdraw);
     }
 
     public function testEnsureACustomerCannotWithdrawANegativeValue(): void
