@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08ea5039-d958-4ddf-a948-052665f74b06" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Freelancer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Metinet/Domain/Freelancer/FreelancerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/oop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Metinet/Controllers/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metinet/Controllers/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Metinet/Domain/Blog/BlogArticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metinet/Domain/Blog/BlogArticle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/blog/latestPosts.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/views/blog/latestPosts.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/views/blog/latestPosts.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
-              <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
+              <caret line="24" column="64" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#blockquote#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -39,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="742">
-              <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+            <state relative-caret-position="70">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -58,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Freelancer/FreelancerTest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -67,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Freelancer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
-              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -88,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/Comment.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="714">
-              <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -166,6 +157,7 @@
         <option value="$PROJECT_DIR$/views/blog/latestPosts.html.twig" />
         <option value="$PROJECT_DIR$/tests/Metinet/Domain/Freelancer/FreelancerTest.php" />
         <option value="$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Freelancer.php" />
+        <option value="$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php" />
       </list>
     </option>
   </component>
@@ -405,16 +397,15 @@
       <workItem from="1547642214772" duration="10448000" />
       <workItem from="1547654841972" duration="1976000" />
       <workItem from="1547710834996" duration="4675000" />
-      <workItem from="1547718234608" duration="4576000" />
+      <workItem from="1547718234608" duration="5900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36450000" />
+    <option name="totallyTimeSpent" value="37774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22371638" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -697,7 +688,7 @@
     <entry file="file://$PROJECT_DIR$/views/blog/latestPosts.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
+          <caret line="24" column="64" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#blockquote#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -723,7 +714,7 @@
     <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -740,14 +731,14 @@
     <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Freelancer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Freelancer/FreelancerTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -760,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        <state relative-caret-position="70">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
