@@ -2,14 +2,14 @@
 
 namespace Metinet\Domain;
 
+use Metinet\Domain\Account\Account;
+
 class Client
 {
-    // private $id;
     private $account;
 
     public function __construct(Account $account)
     {
-        // $this->id = uniqid();
         $this->account = $account;
     }
 
