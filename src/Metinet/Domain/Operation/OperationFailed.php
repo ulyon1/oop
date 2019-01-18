@@ -28,4 +28,9 @@ class OperationFailed extends \Exception
 	{
 		return new self('You can\'t withdraw a negative amount');
 	}
+
+	public static function cannotWithdrawZeroValue(): self
+	{
+		return new self('The withdraw amount must be greater than 0');
+	}
 }
