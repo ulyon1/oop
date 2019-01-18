@@ -8,4 +8,9 @@ class OperationFailed extends \Exception
 	{
 		return new self('You can\'t deposit a negative amount');
 	}
+
+	public static function cannotDepositZeroValue(): self
+	{
+		return new self('The deposit amount must be greater than 0');
+	}
 }

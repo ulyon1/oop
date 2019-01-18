@@ -32,6 +32,17 @@ class BankAccountTest extends TestCase
     	$account->addOperation($deposit);
     }
 
+    public function testEnsureACustomerCannotDepositAZeroValue(): void
+    {
+    	$this->expectException(OperationFailed::class);
+    	$this->expectExceptionMessage('The deposit amount must be greater than 0');
+
+        $account = new BankAccount('John', 'Smith');
+    	$deposit = new Deposit(Money::EUR(0));
+
+    	$account->addOperation($deposit);
+    }
+
     public function testEnsureACustomerCanWithdrawMoney(): void
     {
         $this->assertTrue(true);

@@ -31,6 +31,9 @@ class Deposit implements Operation
 		if($this->depositAmount->isNegative())
 			throw OperationFailed::cannotDepositNegativeValue();
 
+		if($this->depositAmount->isZero())
+			throw OperationFailed::cannotDepositZeroValue();
+
 		return $balance->add($this->depositAmount);
 	}
 }
