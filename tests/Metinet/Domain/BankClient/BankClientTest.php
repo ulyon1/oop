@@ -42,6 +42,9 @@ class BankClientTest extends TestCase
 
     }
 
+    public function testABankClientCannotHaveAnOperationWithNullStatement(){
+
+    }
     public function testABankClientCanTakeALookOnHisHistory()
     {
 

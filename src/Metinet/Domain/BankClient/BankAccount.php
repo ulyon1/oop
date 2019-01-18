@@ -30,6 +30,7 @@ class BankAccount
     public function doAnOperation(string $operation, Money $amount, Money $balance)
     {
 
+        $this->ensureValidOperation($operation, $amount, $balance);
         $this->operationHistory [] = new BankOperation($operation,
             \DateTimeImmutable::createFromFormat('U', time(), new \DateTimeZone('UTC')),
             $amount,
@@ -65,8 +66,30 @@ class BankAccount
     public function getOperationHistory(): array
     {
 
+        $this->ensureValidOperationList();
         return $this->operationHistory;
     }
 
+    public function ensureValidOperation(string $operation, Money $amount, Money $balance)
+    {
+
+        if ($operation === null || $operation = '') {
+            throw UnableToMakeAOperationOnBankClientAccount::cannotHaveNullStatement();
+        }
+        if ($amount === null) {
+            throw UnableToMakeAOperationOnBankClientAccount::cannotHaveNullStatement();
+        }
+        if ($balance === null) {
+            throw UnableToMakeAOperationOnBankClientAccount::cannotHaveNullStatement();
+        }
+    }
+
+    public function ensureValidOperationList()
+    {
+
+        if (count($this->operationHistory) === 0) {
+            throw UnableToGetOperationListOnBankClientAccount::cannotGetOperationList();
+        }
+    }
 
 }

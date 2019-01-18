@@ -60,6 +60,7 @@ class BankClient
     public function withdrawMoney(Money $amount)
     {
 
+        $this->ensureValidWithdraw($amount);
         $balance = $this->account->retrieve($amount);
         $this->account->doAnOperation("Withdraw", $amount, $balance);
     }
@@ -67,6 +68,7 @@ class BankClient
     public function depositMoney(Money $amount)
     {
 
+        $this->ensureValidDeposit($amount);
         $balance = $this->account->deposit($amount);
         $this->account->doAnOperation("Deposit", $amount, $balance);
     }
@@ -80,5 +82,30 @@ class BankClient
         return $this->account->getOperationHistory();
     }
 
+    public function ensureValidWithdraw(Money $amount)
+    {
+
+        if ($amount->isZero() || $amount === null) {
+            throw UnableToMakeAWithdrawOnBankClientAccount::cannotHaveNullAmount();
+        }
+        if ($amount->isNegative()) {
+            throw UnableToMakeAWithdrawOnBankClientAccount::cannotBeNegative();
+        }
+        $accountBalance = $this->account->getBalance();
+        if ($accountBalance->subtract($amount)->lessThan(Money::EUR(-500))) {
+            throw UnableToMakeAWithdrawOnBankClientAccount::cannotWithdrawIfAccountIsUnder500();
+        }
+    }
+
+    public function ensureValidDeposit(Money $amount)
+    {
+
+        if ($amount->isZero() || $amount === null) {
+            throw UnableToMakeADepositOnBankClientAccount::cannotHaveNullAmount();
+        }
+        if ($amount->isNegative()) {
+            throw UnableToMakeADepositOnBankClientAccount::cannotBeNegative();
+        }
+    }
 
 }
