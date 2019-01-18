@@ -15,13 +15,14 @@ class BankAccount
 {
 
     private $bankClient;
+    private $authorizeOverDraft;
     /**
      * @var BankOperation[]
      */
     private $operations;
 
-    public static function createAccount(BankClient $bankClient):self {
-        return new self($bankClient);
+    public static function createAccount(BankClient $bankClient, bool $authorizeOverDraft):self {
+        return new self($bankClient, $authorizeOverDraft);
     }
 
     public function getBalance():Money{
@@ -44,6 +45,7 @@ class BankAccount
 
     public function makeWithdrawal(BankOperation $withdrawal):void {
         $this->operations[] = $withdrawal;
+        $this->ensureBankClientCanWithdrawalAmount($withdrawal->getMoney());
     }
 
     public function getBankClient(): BankClient
@@ -51,7 +53,12 @@ class BankAccount
         return $this->bankClient;
     }
 
-    public function getListOperations(): array
+    public function isAuthorizeOverDraft(): bool
+    {
+        return $this->authorizeOverDraft;
+    }
+
+    public function getOperations(): array
     {
         return $this->operations;
     }
@@ -82,9 +89,17 @@ class BankAccount
         return null;
     }
 
-    private function __construct(BankClient $bankClient)
+    private function __construct(BankClient $bankClient, bool $authorizeOverDraft)
     {
         $this->bankClient = $bankClient;
+        $this->authorizeOverDraft = $authorizeOverDraft;
+    }
+
+    private function ensureBankClientCanWithdrawalAmount(Money $money){
+        if ($this->getBalance()->subtract($money)->getAmount() < 0){
+            array_pop($this->operations);
+            throw UnableToMakeOperationOnBankAccount::unableToWithdrawalMoneyBecauseOverDraftNotAuthorized();
+        }
     }
 
 

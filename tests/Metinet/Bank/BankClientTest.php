@@ -6,6 +6,7 @@ use Metinet\Domain\Bank\BankAccount;
 use Metinet\Domain\Bank\BankClient;
 use Metinet\Domain\Bank\Deposit;
 use Metinet\Domain\Bank\UnableToCreateBankClient;
+use Metinet\Domain\Bank\UnableToMakeOperationOnBankAccount;
 use Metinet\Domain\Bank\Withdrawal;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +20,7 @@ class BankClientTest extends TestCase
 
         $bankClient = BankClient::createClient($firstName, $lastName);
 
-        $bankAccount = BankAccount::createAccount($bankClient);
+        $bankAccount = BankAccount::createAccount($bankClient, true);
 
         $money = Money::EUR(100);
         $deposit = Deposit::create($money);
@@ -57,7 +58,7 @@ class BankClientTest extends TestCase
 
         $bankClient = BankClient::createClient($firstName, $lastName);
 
-        $bankAccount = BankAccount::createAccount($bankClient);
+        $bankAccount = BankAccount::createAccount($bankClient, true);
 
         $money = Money::EUR(100);
         $deposit = Deposit::create($money);
@@ -71,6 +72,22 @@ class BankClientTest extends TestCase
         $this->assertEquals($withdrawal, $bankAccount->getLastWithdrawal());
     }
 
+    public function testAsABankClientICannotWithdrawalMoneyWhenIHavntAmountAndUnauthorizedOverDraft():void
+    {
+        $this->expectException(UnableToMakeOperationOnBankAccount::class);
+        $this->expectExceptionMessage('You cannot withdrawal this amount because overdraft is not authorized on you account');
+
+        $firstName = 'John';
+        $lastName = 'Doe';
+
+        $bankClient = BankClient::createClient($firstName, $lastName);
+
+        $bankAccount = BankAccount::createAccount($bankClient, false);
+
+        //$bankAccount->makeDeposit(Deposit::create(Money::EUR(10)));
+        $bankAccount->makeWithdrawal(Withdrawal::create(Money::EUR(50)));
+    }
+
     public function testAsABankClientIWantToCheckOperationsOnMyAccount(): void
     {
         $firstName = 'John';
@@ -78,7 +95,7 @@ class BankClientTest extends TestCase
 
         $bankClient = BankClient::createClient($firstName, $lastName);
 
-        $bankAccount = BankAccount::createAccount($bankClient);
+        $bankAccount = BankAccount::createAccount($bankClient, true);
 
 
         $bankAccount->makeDeposit(Deposit::create(Money::EUR(100)));
@@ -97,4 +114,6 @@ class BankClientTest extends TestCase
         $this->assertEquals($bankAccount->getBalance(), Money::EUR(520));
 
     }
+
+
 }
