@@ -1,38 +1,49 @@
 <?php
 
-namespace Metinet\Domain\Freelancer;
+namespace Metinet\Domain\BankAccount;
+
+use phpDocumentor\Reflection\Types\Boolean;
 
 class BankAccount
 {
-    private $countAmount;
+    private $totalMoneyAmount;
+    private $operationHistory = [
+        "operationType" => [],
+        "operationAmount" => [],
+        "operationDescription" => [],
+        "operationDate" => []
+    ];
 
-    private function __construct(string $firstName, string $lastName, string $dateOfBirth)
+    private function __construct(string $totalMoneyAmount)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->dateOfBirth = $dateOfBirth;
+        $this->totalMoneyAmount = $totalMoneyAmount;
     }
 
-    public static function signUp(string $firstName, string $lastName, string $dateOfBirth): Freelancer
+    public static function createAccount(string $totalMoneyAmount ): BankAccount
     {
-        return new self($firstName, $lastName, $dateOfBirth);
+        return new self($totalMoneyAmount);
     }
 
+    public function makeDeposit(int $depositAmount, string $depositDescription): Boolean
+    {
+        array_push($this->operationHistory["operationType"], "Deposit");
+        array_push($this->operationHistory["operationAmount"], $depositAmount);
+        array_push($this->operationHistory["operationDescription"], $depositDescription);
+        array_push($this->operationHistory["operationDate"], date("Y-m-d"));
 
-    public function getFirstName(): string
+        $this->totalMoneyAmount += $depositAmount;
+    }
+
+    public function getTotalMoneyAmount(): string
     {
         return $this->firstName;
     }
 
-    public function getLastName(): string
+    public function seeHistoryOfOperations()
     {
-        return $this->lastName;
+        return $this->operationHistory;
     }
 
-    public function getDateOfBirth(): string
-    {
-        return $this->dateOfBirth;
-    }
 
 
 }
