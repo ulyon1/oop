@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.2",
+        "php": "^7.1.9",
         "beberlei/assert": "^2.8",
         "mathiasverraes/classfunctions": "^1.1",
         "moneyphp/money": "^3.2",
