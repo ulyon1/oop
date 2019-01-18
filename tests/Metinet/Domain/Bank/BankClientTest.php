@@ -13,4 +13,13 @@ class BankClientTest extends TestCase
 
         $this->assertEquals($bankName, $bank->getName());
     }
+
+    public function testABankCannotHaveEmptyName(): void
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('The bank\'s name can not be empty');
+
+        $emptyBankName = "";
+        $bank = new Bank($emptyBankName);
+    }
 }
