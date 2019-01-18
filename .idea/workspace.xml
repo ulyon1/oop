@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6b9fa129-0ef2-4701-8c70-4a01c814ae0e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/Account.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/BankClient.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/ErrorsCurrency.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/ErrorsUncovered.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/Operation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Metinet/Domain/OperationsHistory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Metinet/Domain/BankClientTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Metinet/SampleTest.php" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BankClientTest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/BankClientTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="66" column="1" lean-forward="true" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
+              <folding>
+                <element signature="e#34#53#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorsCurrency.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/ErrorsCurrency.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BankClient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/BankClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+              <folding>
+                <element signature="e#443#526#0#PHP" />
+                <element signature="e#570#651#0#PHP" />
+                <element signature="e#695#770#0#PHP" />
+                <element signature="e#815#895#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Account.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Account.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+              <folding>
+                <element signature="e#113#132#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorsUncovered.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/ErrorsUncovered.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperationsHistory.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/OperationsHistory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Operation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Operation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>signUp</find>
+      <find>passwordEncoder</find>
+      <find>date</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/public/Configuration.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Core/Config/Configuration.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Core/Controller/ConferencesController.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/config/routes.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Classes/Conference.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Address.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Conference.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Participant.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/ParticipantCollection.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/ConferenceDetails.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Controllers/ConferencesController.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Controllers/DefaultController.php" />
+        <option value="$PROJECT_DIR$/views/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/Metinet/FormValidation/MemberSignIn.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Repositories/MemberInMemoryRepository.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Repositories/MemberRepository.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Repositories/MemberSerializedFileRepository.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Repositories/FindMemberRepository.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/FormValidation/MemberSignInValidator.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Core/DependencyManager.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/FormValidation/PasswordMatcher.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Controllers/MembersController.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Article.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Blog.php" />
+        <option value="$PROJECT_DIR$/config/routes.json" />
+        <option value="$PROJECT_DIR$/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/PostBlog.php" />
+        <option value="$PROJECT_DIR$/views/blog/newBlogPost.html.twig" />
+        <option value="$PROJECT_DIR$/src/Metinet/Controllers/BlogController.php" />
+        <option value="$PROJECT_DIR$/views/blog/latestPosts.html.twig" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/UnableToPostComment.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/Comment.php" />
+        <option value="$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Freelancer/FreelancerCollection.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Freelancer/InvalidRegister.php" />
+        <option value="$PROJECT_DIR$/tests/Metinet/Domain/Blog/Freelancer/ClientTest.php" />
+        <option value="$PROJECT_DIR$/tests/Metinet/Domain/Blog/Freelancer/FreelancerTest.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Client.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Freelancer.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/BankClient.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Operation.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/OperationsHistory.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/ErrorsUncoveredd.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/ErrorsCurrency.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/ErrorsUncovered.php" />
+        <option value="$PROJECT_DIR$/src/Metinet/Domain/Account.php" />
+        <option value="$PROJECT_DIR$/tests/Metinet/Domain/BankClientTest.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/mathiasverraes/classfunctions" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/moneyphp/money" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="840" />
+    <option name="height" value="1010" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Metinet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Metinet" type="462c0819:PsiDirectoryNode" />
+              <item name="Domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="Metinet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oop" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../oop1/oop9" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lp\Desktop\php\oop\src\Metinet\Domain" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lp\Desktop\php\oop\src\Metinet\Controllers" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b9fa129-0ef2-4701-8c70-4a01c814ae0e" name="Default" comment="" />
+      <created>1547463575627</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547463575627</updated>
+      <workItem from="1547463578138" duration="6896000" />
+      <workItem from="1547538345958" duration="17030000" />
+      <workItem from="1547624544274" duration="18484000" />
+      <workItem from="1547710905683" duration="19295000" />
+      <workItem from="1547798293902" duration="294000" />
+      <workItem from="1547798602356" duration="9277000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="71276000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.116071425" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.0756579" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32894737" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32924107" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0952381" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32924107" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="11" side_tool="true" visible="true" weight="0.0756579" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="7" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/var/storage/members.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Core/Security/Sha1PasswordEncoder.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Members/MemberRepository.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Repositories/MemberNotFound.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Repositories/MemberRepository.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Repositories/MemberInMemoryRepository.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Repositories/FindMemberRepository.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Members/Member.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/FormValidation/MemberSignUp.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/FormValidation/MemberSignIn.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Controllers/BaseController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Core/DependencyManager.php" />
+    <entry file="file://$PROJECT_DIR$/views/login.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/FormValidation/MemberSignInValidator.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/FormValidation/PasswordMatcher.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Controllers/MembersController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Conference.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/ConferenceDetails.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Controllers/ConferencesController.php" />
+    <entry file="file://$PROJECT_DIR$/views/signIn.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog.php" />
+    <entry file="file://$PROJECT_DIR$/config/routes.json" />
+    <entry file="file://$PROJECT_DIR$/views/blog/newBlogPost.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/PostBlog.php" />
+    <entry file="file://$PROJECT_DIR$/views/base.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Repositories/MemberSerializedFileRepository.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Controllers/BlogController.php" />
+    <entry file="file://$PROJECT_DIR$/views/blog/latestPosts.html.twig" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/UnableToPostComment.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Freelancer/FreelancerCollection.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/BadWordsDetected.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/UnableToDeleteComment.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/InvalidCommentBody.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/UnableToEditComment.php" />
+    <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Blog/Comment/CommentTest.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Freelancer/InvalidRegister.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Blog/Comment/Comment.php" />
+    <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Blog/Freelancer/ClientTest.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Client.php" />
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Freelancer/Freelancer.php" />
+    <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/Blog/Freelancer/FreelancerTest.php" />
+    <entry file="file://$PROJECT_DIR$/exo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Metinet/SampleTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Operation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/OperationsHistory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/ErrorsUncovered.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" selection-start-line="11" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/ErrorsUncovered.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/ErrorsCurrency.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/BankClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="e#443#526#0#PHP" />
+            <element signature="e#570#651#0#PHP" />
+            <element signature="e#695#770#0#PHP" />
+            <element signature="e#815#895#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Metinet/Domain/Account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
+          <folding>
+            <element signature="e#113#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Metinet/Domain/BankClientTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="66" column="1" lean-forward="true" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
+          <folding>
+            <element signature="e#34#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
