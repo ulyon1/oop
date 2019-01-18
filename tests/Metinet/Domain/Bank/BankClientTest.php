@@ -53,11 +53,43 @@ class BankClientTest extends TestCase
         $bankClient = new BankClient("Mael", "Brevet");
         $bankClient->openAccount("Eur");
 
-        //En centimes
+        // * 100 pour en centimes
         $depositAmount = 1340 * 100;
 
         $bankClient->makeDeposit($depositAmount);
 
         $this->assertEquals($depositAmount, $bankClient->getAccount()->getAmount());
+    }
+
+    public function testAClientCanMakeAWithdrawal(): void
+    {
+        $bankClient = new BankClient("Mael", "Brevet");
+        $bankClient->openAccount("Eur");
+        $bankClient->makeDeposit(1340 * 100);
+
+        $clientAccountAmountBeforeWithdraw = $bankClient->getAccount()->getAmount();
+
+        // *100 pour en centimes
+        $withdrawalAmount = 100 * 100;
+
+        $bankClient->makeWithdrawal($withdrawalAmount);
+
+        $this->assertEquals($withdrawalAmount, $clientAccountAmountBeforeWithdraw - $bankClient->getAccount()->getAmount());
+    }
+
+    public function testAWithdrawCannotBeOverClientAccountAuthorisation(): void
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('You have not enough money in your account');
+
+
+        $bankClient = new BankClient("Mael", "Brevet");
+        // 200 * 100 pour en centimes
+        $bankClient->openAccount("Eur", 200 * 100);
+
+        $withdrawalAmount = 500 * 100;
+
+        $bankClient->makeWithdrawal($withdrawalAmount);
+
     }
 }

@@ -28,6 +28,11 @@ class BankClient
         $this->account->deposit($amount);
     }
 
+    public function makeWithdrawal(int $amount): void
+    {
+        $this->account->withdraw($amount);
+    }
+
     public function getFirstName(): string
     {
         return $this->firstName;

@@ -7,6 +7,7 @@ class BankAccount
     //TODO: mettre la class Money à la place
     private $amount;
     private $currency;
+    private $maxOverdraft = 0;
 
     function __construct(int $amount, string $currency)
     {
@@ -19,6 +20,13 @@ class BankAccount
         $this->amount += $amount;
     }
 
+    public function withdraw(int $amount): void
+    {
+        $this->ensureCanMakeWithdrawal($amount);
+
+        $this->amount -= $amount;
+    }
+
     public function getAmount(): int
     {
         return $this->amount;
@@ -27,5 +35,12 @@ class BankAccount
     public function getCurrency(): string
     {
         return $this->currency;
+    }
+
+    public function ensureCanMakeWithdrawal(int $amount): void
+    {
+        if( $amount > ($this->amount + $this->maxOverdraft) ){
+            throw new \Exception("You have not enough money in your account");
+        }
     }
 }
