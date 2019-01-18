@@ -92,7 +92,8 @@ class BankClient
             throw UnableToMakeAWithdrawOnBankClientAccount::cannotBeNegative();
         }
         $accountBalance = $this->account->getBalance();
-        if ($accountBalance->subtract($amount)->lessThan(Money::EUR(-500))) {
+        $accountBalance->subtract($amount);
+        if ($accountBalance->lessThan(Money::EUR(-500))) {
             throw UnableToMakeAWithdrawOnBankClientAccount::cannotWithdrawIfAccountIsUnder500();
         }
     }
