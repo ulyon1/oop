@@ -15,6 +15,11 @@ class BankAccount
         $this->currency = $currency;
     }
 
+    public static function open(int $amount, string $currency): self
+    {
+        return new self($amount, $currency);
+    }
+
     public function deposit(int $amount): void
     {
         $this->amount += $amount;

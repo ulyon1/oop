@@ -16,14 +16,12 @@ class BankClient
 
     public function openAccount(string $currency, int $amount = 0): void
     {
-        $this->account = new BankAccount($amount, $currency);
+        $this->account = BankAccount::open($amount, $currency);
     }
 
     public function makeDeposit(int $amount): void
     {
-        if( $amount === 0 ){
-            throw new \Exception("The deposit amount must be over 0");
-        }
+        $this->ensureTheDepositIsOver0($amount);
 
         $this->account->deposit($amount);
     }
@@ -46,5 +44,12 @@ class BankClient
     public function getAccount(): BankAccount
     {
         return $this->account;
+    }
+
+    public function ensureTheDepositIsOver0(int $amount): void
+    {
+        if( $amount === 0 ){
+            throw new \Exception("The deposit amount must be over 0");
+        }
     }
 }

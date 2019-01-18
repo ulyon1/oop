@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class BankClientTest extends TestCase
 {
+    /* Ajout de la Bank (En plus, pas obligatoire) */
     public function testABankMustHaveName(): void
     {
         $bankName = "Crédit Agricole";
@@ -23,11 +24,6 @@ class BankClientTest extends TestCase
         $bank = new Bank($emptyBankName);
     }
 
-    public function testABankClientCannotHaveEmptyName(): void
-    {
-        //Ici je test que le client possède un nom et un prenom non vide
-    }
-
     public function testABankCanAddBankClient(): void
     {
         $bank = new Bank('Crédit agricole');
@@ -37,6 +33,12 @@ class BankClientTest extends TestCase
 
         $this->assertEquals($newBankClient->getFirstName(), $bankClient->getFirstName());
         $this->assertEquals($newBankClient->getLastName(), $bankClient->getLastName());
+    }
+    /* Fin de la Bank (petit plus) */
+
+    public function testABankClientCannotHaveEmptyName(): void
+    {
+        //Ici je test que le client possède un nom et un prenom non vide
     }
 
     public function testAClientCanOpenAccount(): void
