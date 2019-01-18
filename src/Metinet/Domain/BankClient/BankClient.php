@@ -60,21 +60,22 @@ class BankClient
     public function withdrawMoney(Money $amount)
     {
 
-        $balance = $this->account->getBalance()->subtract($amount);
+        $balance = $this->account->retrieve($amount);
         $this->account->doAnOperation("Withdraw", $amount, $balance);
     }
 
     public function depositMoney(Money $amount)
     {
 
-        $balance = $this->account->getBalance()->add($amount);
+        $balance = $this->account->deposit($amount);
         $this->account->doAnOperation("Deposit", $amount, $balance);
     }
 
     /**
      * @return array
      */
-    public function getAccountOperations(){
+    public function getAccountOperations()
+    {
 
         return $this->account->getOperationHistory();
     }

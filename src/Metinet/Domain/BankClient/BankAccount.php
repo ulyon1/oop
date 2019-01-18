@@ -36,6 +36,20 @@ class BankAccount
             $balance);
     }
 
+    public function retrieve($amount): Money
+    {
+
+        $this->balance = $this->balance->subtract($amount);
+        return $this->balance;
+    }
+
+    public function deposit($amount): Money
+    {
+
+        $this->balance = $this->balance->add($amount);
+        return $this->balance;
+    }
+
     /**
      * @return Money
      */
