@@ -47,4 +47,20 @@ class BankAccount
 
 		return $this;
 	}
+
+	public function getOperationsData(): array
+	{
+		$result = [];
+		foreach ($this->operations as $operation)
+		{
+			array_push($result, [
+				'type' => $operation->getOperationType(),
+				'amount' => $operation->getOperationAmount(), 
+				'time' => $operation->getOperationTime(),
+				'balanceAfter' => $operation->getBalanceAfter()
+			]);
+		}
+
+		return $result;
+	}
 }

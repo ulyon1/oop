@@ -26,6 +26,11 @@ class Deposit implements Operation
 		return $this->depositTime;
 	}
 
+	public function getBalanceAfter(): ?Money
+	{
+		return $this->balanceAfter;
+	}
+
 	public function executeOnBalance(Money $balance): Money
 	{
 		if($this->depositAmount->isNegative())
@@ -37,6 +42,21 @@ class Deposit implements Operation
 		if(!$this->depositAmount->isSameCurrency($balance))
 			throw OperationFailed::cannotDepositAmountExpressedInOtherCurrency();
 
-		return $balance->add($this->depositAmount);
+		return $this->balanceAfter = $balance->add($this->depositAmount);
+	}
+
+	public function getOperationType(): string
+	{
+		return 'deposit';
+	}
+
+	public function getOperationAmount(): Money
+	{
+		return $this->depositAmount;
+	}
+
+	public function getOperationTime(): \DateTimeImmutable
+	{
+		return $this->depositTime;
 	}
 }

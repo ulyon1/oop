@@ -111,6 +111,23 @@ class BankAccountTest extends TestCase
 
     public function testEnsureACustomerCanSeeHistoryOfOperations(): void
     {
-        $this->assertTrue(true);
+        $account = new BankAccount('John', 'Smith');
+
+        $account ->addOperation(new Deposit(Money::EUR(30)))
+        	->addOperation(new Withdraw(Money::EUR(20)))
+        	->addOperation(new Deposit(Money::EUR(700)));
+
+        $data = $account->getoperationsData();
+        $this->assertEquals($data[0]['type'], 'deposit');
+        $this->assertTrue($data[0]['amount']->equals(Money::EUR(30)));
+        $this->assertTrue($data[0]['balanceAfter']->equals(Money::EUR(30)));
+
+        $this->assertEquals($data[1]['type'], 'withdraw');
+        $this->assertTrue($data[1]['amount']->equals(Money::EUR(20)));
+        $this->assertTrue($data[1]['balanceAfter']->equals(Money::EUR(10)));
+
+        $this->assertEquals($data[2]['type'], 'deposit');
+        $this->assertTrue($data[2]['amount']->equals(Money::EUR(700)));
+        $this->assertTrue($data[2]['balanceAfter']->equals(Money::EUR(710)));
     }
 }

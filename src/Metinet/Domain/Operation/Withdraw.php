@@ -8,6 +8,7 @@ class Withdraw implements Operation
 {
 	private $withdrawAmount;
 	private $withdrawTime;
+	private $balanceAfter;
 
 	public function __construct(Money $withdrawAmount, ?\DateTimeImmutable $withdrawTime = null)
 	{
@@ -25,6 +26,11 @@ class Withdraw implements Operation
 		return $this->withdrawTime;
 	}
 
+	public function getBalanceAfter(): ?Money
+	{
+		return $this->balanceAfter;
+	}
+
 	public function executeOnBalance(Money $balance): Money
 	{
 		if($this->withdrawAmount->isNegative())
@@ -39,6 +45,21 @@ class Withdraw implements Operation
 		if($balance->lessThan($this->withdrawAmount))
 			throw OperationFailed::cannotWithdrawMoreThanAccountCredit();
 
-		return $balance->subtract($this->withdrawAmount);
+		return $this->balanceAfter = $balance->subtract($this->withdrawAmount);
+	}
+
+	public function getOperationType(): string
+	{
+		return 'withdraw';
+	}
+
+	public function getOperationAmount(): Money
+	{
+		return $this->withdrawAmount;
+	}
+
+	public function getOperationTime(): \DateTimeImmutable
+	{
+		return $this->withdrawTime;
 	}
 }
