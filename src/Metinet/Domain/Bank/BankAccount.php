@@ -74,7 +74,6 @@ class BankAccount
 
     public function getLastWithdrawal():?BankOperation
     {
-        dump($this->operations);
         for ($i = count($this->operations) - 1; $i >= 0; $i-- ){
             if ($this->operations[$i] instanceof Withdrawal){
                 return $this->operations[$i];
