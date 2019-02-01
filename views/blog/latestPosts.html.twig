@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+
+            {% for post in latestPosts %}
+
+                <!-- Post Content Column -->
+                <div class="col-lg-8">
+
+                    <!-- Title -->
+                    <h1 class="mt-4">{{ post.title }}</h1>
+
+                    <!-- Author -->
+                    <p class="lead">
+                        by
+                        <a href="#">{{ post.author.getProfileName }}</a>
+                    </p>
+
+                    <hr>
+
+                    <!-- Date/Time -->
+                    <p>Posted : {{ post.postDate("d/m/Y") }}</p>
+
+                    <blockquote class="blockquote">
+                        <p class="mb-0">{{ post.body }}</p>
+                        {% if post.comments|length > 0 %}
+                            <ul style="font-size: 1.2rem;">
+                                {% for comment in post.comments %}
+                                    <li>{{ comment.body }}<small>{{ comment.author }}</small></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </blockquote>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- /.container -->
+{% endblock %}
